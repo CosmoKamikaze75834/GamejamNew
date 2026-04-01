@@ -748,6 +748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd3b754a0bdf048984ed0b884cb97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuBootstrap
+  _generalSound: {fileID: 1724027871}
+  _music: {fileID: 623858171}
+  _sfx: {fileID: 2065348642}
 --- !u!4 &409300644
 Transform:
   m_ObjectHideFlags: 0

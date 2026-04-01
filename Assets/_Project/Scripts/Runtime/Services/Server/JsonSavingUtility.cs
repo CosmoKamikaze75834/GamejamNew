@@ -7,13 +7,18 @@ public class JsonSavingUtility : ISavingUtility
     private readonly string _filePath;
     private readonly IEncryptor _encryptor;
 
-    public JsonSavingUtility(string fileName, IEncryptor encryptor)
+    public JsonSavingUtility(SavesDataConfig config, IEncryptor encryptor)
     {
-        if (string.IsNullOrEmpty(fileName))
-            throw new ArgumentException("Имя файла не может быть пустым", nameof(fileName));
+        if(config == null)
+            throw new ArgumentNullException(nameof(config));
+
+        string filename = config.Filename;
+
+        if (string.IsNullOrEmpty(filename))
+            throw new ArgumentException("Имя файла не может быть пустым", nameof(filename));
 
         _encryptor = encryptor ?? throw new ArgumentNullException(nameof(encryptor));
-        _filePath = Path.Combine(Application.persistentDataPath, fileName);
+        _filePath = Path.Combine(Application.persistentDataPath, filename);
     }
 
     public void Save<T>(T data) where T : class

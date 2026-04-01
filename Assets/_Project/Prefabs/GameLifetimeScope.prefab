@@ -53,6 +53,7 @@ MonoBehaviour:
   _someSceneReference: {fileID: 6588916156820718312}
   _updateService: {fileID: 6921530035143226767}
   _audioService: {fileID: 6266356898239572301}
+  _savesDataConfig: {fileID: 11400000, guid: bb1b6ca0b831d3846856e3fd3fcefe52, type: 2}
 --- !u!1001 &362957133587317434
 PrefabInstance:
   m_ObjectHideFlags: 0

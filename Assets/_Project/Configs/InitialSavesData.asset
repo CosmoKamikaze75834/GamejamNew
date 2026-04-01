@@ -16,3 +16,4 @@ MonoBehaviour:
     _generalSoundVolume: 0.8
     _musicVolume: 0.7
     _sfxVolume: 0.85
+  _filename: saves
