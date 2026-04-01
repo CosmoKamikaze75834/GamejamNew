@@ -73,3 +73,14 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# CUSTOM ADDITION for Unity 6000.3.10f1 - BEGIN
+# ==================================================
+# Явно игнорируем большие бинарные файлы внутри Library/PackageCache,
+# которые могут не покрываться правилом /[Ll]ibrary/ (например, если они уже в индексе).
+/[Ll]ibrary/[Pp]ackage[Cc]ache/**/*.dylib
+/[Ll]ibrary/[Pp]ackage[Cc]ache/**/*.so
+/[Ll]ibrary/[Pp]ackage[Cc]ache/**/*.exe
+/[Ll]ibrary/[Pp]ackage[Cc]ache/**/*.dll
+# ==================================================
+# CUSTOM ADDITION - END
