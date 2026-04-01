@@ -1,10 +1,10 @@
 using VContainer;
 using VContainer.Unity;
 
-public class MenuGameScope : LifetimeScope
+public class GameScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {
-        
+
     }
 }

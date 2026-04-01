@@ -14,11 +14,17 @@ public class GameLifetimeScope : LifetimeScope
 
     protected override void Configure(IContainerBuilder builder)
     {
+        _builder = builder;
+
+        BindSceneLoader();
         BindInputReader();
         BindUpdateService();
         BindAudioService();
         BindSaver();
     }
+
+    private void BindSceneLoader()=>
+        _builder.Register<SceneLoader>(Lifetime.Singleton);
 
     private void BindInputReader() =>
         _builder.Register<InputReader>(Lifetime.Singleton).As<IInputReader>();
