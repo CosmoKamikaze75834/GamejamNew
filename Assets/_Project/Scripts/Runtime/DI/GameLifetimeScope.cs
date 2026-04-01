@@ -14,5 +14,6 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<InputReader>(Lifetime.Singleton).As<IInputReader>();
         builder.RegisterComponent<IUpdateService>(_updateService);
         builder.RegisterComponent<IAudioService>(_audioService);
+        //builder.Register<ISaver<SavesData>>
     }
 }
