@@ -22,16 +22,16 @@ public class MenuUIDirector : MonoBehaviour
     {
         _openerSettingsButton.onClick.AddListener(OnClickOpenerSettingsButton);
         _closerSettingsButton.onClick.AddListener(OnClickCloserSettingsButton);
-        _exitGameButton.onClick.AddListener(OnClickExitButton);
         _playButton.onClick.AddListener(OnClickPlaytButton);
+        _exitGameButton.onClick.AddListener(OnClickExitButton);
     }
 
     private void OnDisable()
     {
         _openerSettingsButton.onClick.RemoveListener(OnClickOpenerSettingsButton);
         _closerSettingsButton.onClick.RemoveListener(OnClickCloserSettingsButton);
-        _exitGameButton.onClick.RemoveListener(OnClickExitButton);
         _playButton.onClick.RemoveListener(OnClickPlaytButton);
+        _exitGameButton.onClick.RemoveListener(OnClickExitButton);
     }
 
     private void OnClickOpenerSettingsButton()
@@ -44,13 +44,13 @@ public class MenuUIDirector : MonoBehaviour
         _settingsPopApp.Hide();
     }
 
-    private void OnClickExitButton()
-    {
-        Application.Quit();
-    }
-
     private void OnClickPlaytButton()
     {
         _sceneLoader.Load(Constants.GameSceneName);
+    }
+
+    private void OnClickExitButton()
+    {
+        Application.Quit();
     }
 }

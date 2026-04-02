@@ -1,7 +1,7 @@
 using UnityEngine;
 using VContainer;
 
-public class EntryPointBootstrap: MonoBehaviour
+public class EntryPointBootstrap : MonoBehaviour
 {
     private SceneLoader _sceneLoader;
 
@@ -13,6 +13,7 @@ public class EntryPointBootstrap: MonoBehaviour
 
     private void Start()
     {
-        _sceneLoader.Load(Constants.MenuSceneName);
+        if (_sceneLoader.CurrentSceneName == Constants.EntryPointSceneName)
+            _sceneLoader.Load(Constants.MenuSceneName);
     }
 }

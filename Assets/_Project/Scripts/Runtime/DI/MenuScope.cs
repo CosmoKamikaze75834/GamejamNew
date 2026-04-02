@@ -3,8 +3,5 @@ using VContainer.Unity;
 
 public class MenuScope : LifetimeScope
 {
-    protected override void Configure(IContainerBuilder builder)
-    {
-        
-    }
+    protected override void Configure(IContainerBuilder builder) { }
 }

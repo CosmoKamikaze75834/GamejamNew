@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Constants
 {
-    public const string Version = "2.1.0";
+    public const string Version = "2.1.1";
     public const string MenuPath = "Tools";
 
     public class Window
@@ -18,7 +18,7 @@ public static class Constants
     public static class Settings
     {
         public const string TooltipIconRenderingSwitch = "Включить/выключить отрисовку иконок";
-        public const string TooltiPchoosingIconAndComponent = "Выбери иконку, компонент и радуйся =)";
+        public const string TooltipChoosingIconAndComponent = "Выбери иконку, компонент и радуйся =)";
     }
 
     public static class ContextMenu
@@ -43,7 +43,7 @@ public static class Constants
         public static readonly Color NoneTextureColor = new(0.5f, 0.5f, 0.5f, 0.3f);
     }
 
-    public static class HierarhyIcon
+    public static class HierarchyIcon
     {
         public const string MessageNoDataReceived = "Настройки не загружены";
         public const string MessageComponentIsNull = "Компонент null";
@@ -53,7 +53,7 @@ public static class Constants
 
     public static class Component
     {
-        public const string Tittle = "Выберите компонент";
+        public const string Title = "Выберите компонент";
         public const string NoneNamespacesText = "Без пространства имён";
         public const string MessageTypeWithIdNotFound = "Выбран элемент без типа (возможно, группа): {0}";
     }

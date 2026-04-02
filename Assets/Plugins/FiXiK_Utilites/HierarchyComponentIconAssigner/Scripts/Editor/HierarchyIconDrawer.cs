@@ -59,7 +59,7 @@ namespace FiXiK.HierarchyComponentIconAssigner
         {
             if (ConfigLoader.Config == null)
             {
-                Debug.LogWarning(Constants.HierarhyIcon.MessageNoDataReceived);
+                Debug.LogWarning(Constants.HierarchyIcon.MessageNoDataReceived);
 
                 return;
             }
@@ -80,11 +80,13 @@ namespace FiXiK.HierarchyComponentIconAssigner
             if (ConfigLoader.Config.ComponentIconList == null)
                 return;
 
+            bool configDirty = false;
+
             foreach (ComponentIcon component in ConfigLoader.Config.ComponentIconList)
             {
                 if (component == null)
                 {
-                    Debug.LogWarning(Constants.HierarhyIcon.MessageComponentIsNull);
+                    Debug.LogWarning(Constants.HierarchyIcon.MessageComponentIsNull);
 
                     continue;
                 }
@@ -98,15 +100,18 @@ namespace FiXiK.HierarchyComponentIconAssigner
                 if (seen.Add(componentType))
                 {
                     s_EnabledTypes.Add(componentType);
-
                     if (texture != null)
                         s_Cache[componentType] = texture;
                 }
                 else
                 {
                     component.Clear();
+                    configDirty = true;
                 }
             }
+
+            if (configDirty)
+                EditorUtility.SetDirty(ConfigLoader.Config);
         }
 
         private static void OnHierarchyGUI(int instanceID, Rect selectionRect)
@@ -126,7 +131,7 @@ namespace FiXiK.HierarchyComponentIconAssigner
             if (gameObject == null)
                 return;
 
-            Vector2 iconSize = Constants.HierarhyIcon.IconSize;
+            Vector2 iconSize = Constants.HierarchyIcon.IconSize;
 
             foreach (Type enabledType in s_EnabledTypes)
             {

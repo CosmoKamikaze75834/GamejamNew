@@ -8,25 +8,16 @@ public class MenuBootstrap : MonoBehaviour
     [SerializeField] private Slider _music;
     [SerializeField] private Slider _sfx;
 
-
-    private IUpdateService _updater;
-    private IInputReader _inputReader;
     private ISaver<SavesData> _saver;
 
     [Inject]
-    public void Construct(IUpdateService updateService, IInputReader inputReader, ISaver<SavesData> saver)
+    public void Construct(ISaver<SavesData> saver)
     {
-        Debug.Log(nameof(Construct));
-
-        _updater = updateService;
-        _inputReader = inputReader;
         _saver = saver;
+    }
 
-        if (_updater != null)
-        {
-            Debug.Log("_updater прокинулся");
-        }
-
+    private void Start()
+    {
         SavesData data = _saver.Data;
         _generalSound.value = data.GeneralSoundVolume;
         _music.value = data.MusicVolume;

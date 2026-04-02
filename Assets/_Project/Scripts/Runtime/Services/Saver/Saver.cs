@@ -19,7 +19,7 @@ public class Saver<T> : ISaver<T> where T : class
     public T Load()
     {
         if (_savingUtility.TryLoad(out T currentData))
-            return currentData;   
+            return currentData;
 
         return _initialData;
     }

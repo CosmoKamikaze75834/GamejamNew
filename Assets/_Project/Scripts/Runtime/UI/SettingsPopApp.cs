@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class SettingsPopApp: MonoBehaviour
+public class SettingsPopApp : MonoBehaviour
 {
-    public void Show() => 
+    public void Show() =>
         gameObject.SetActive(true);
 
     public void Hide() =>

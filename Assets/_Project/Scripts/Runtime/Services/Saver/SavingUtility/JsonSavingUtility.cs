@@ -9,7 +9,7 @@ public class JsonSavingUtility : ISavingUtility
 
     public JsonSavingUtility(SavesDataConfig config, IEncryptor encryptor)
     {
-        if(config == null)
+        if (config == null)
             throw new ArgumentNullException(nameof(config));
 
         string filename = config.Filename;
@@ -61,7 +61,7 @@ public class JsonSavingUtility : ISavingUtility
         catch (Exception exception)
         {
             Debug.LogError($"Ошибка загрузки сохранений: {exception.Message}");
-            
+
             return false;
         }
     }

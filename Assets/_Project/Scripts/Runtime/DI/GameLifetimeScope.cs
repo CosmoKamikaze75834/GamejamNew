@@ -5,7 +5,6 @@ using VContainer.Unity;
 
 public class GameLifetimeScope : LifetimeScope
 {
-    [SerializeField] private MonoBehaviour _someSceneReference;
     [SerializeField] private UpdateService _updateService;
     [SerializeField] private AudioService _audioService;
     [SerializeField] private SavesDataConfig _savesDataConfig;
@@ -23,7 +22,7 @@ public class GameLifetimeScope : LifetimeScope
         BindSaver();
     }
 
-    private void BindSceneLoader()=>
+    private void BindSceneLoader() =>
         _builder.Register<SceneLoader>(Lifetime.Singleton);
 
     private void BindInputReader() =>

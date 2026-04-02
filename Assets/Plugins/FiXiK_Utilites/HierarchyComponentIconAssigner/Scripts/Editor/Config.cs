@@ -14,7 +14,7 @@ namespace FiXiK.HierarchyComponentIconAssigner
         [Tooltip(Constants.Settings.TooltipIconRenderingSwitch)]
         [SerializeField] private bool _enabled = true;
 
-        [Tooltip(Constants.Settings.TooltiPchoosingIconAndComponent)]
+        [Tooltip(Constants.Settings.TooltipChoosingIconAndComponent)]
         [SerializeField] private List<ComponentIcon> _componentIconList = new();
 
         public event Action Changed;
