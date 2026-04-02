@@ -21,6 +21,8 @@ public class Saver<T> : ISaver<T> where T : class
         if (_savingUtility.TryLoad(out T currentData))
             return currentData;
 
+        _savingUtility.Save(_initialData);
+
         return _initialData;
     }
 
@@ -33,7 +35,6 @@ public class Saver<T> : ISaver<T> where T : class
     public void ResetProgress()
     {
         _savingUtility.DeleteSaveFile();
-        _currentData = _initialData;
         _currentData = JsonUtility.FromJson<T>(JsonUtility.ToJson(_initialData));
         Save(_currentData);
     }

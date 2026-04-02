@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Constants
 {
-    public const string Version = "2.1.1";
+    public const string Version = "2.1.2";
     public const string MenuPath = "Tools";
 
     public class Window
