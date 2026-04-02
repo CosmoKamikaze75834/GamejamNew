@@ -8,7 +8,8 @@ public class Music : MonoBehaviour
 
     public void Stop()
     {
-        _source.Stop();
+        if (_source != null)
+            _source.Stop();
     }
 
     public void PlayMenuMusic()

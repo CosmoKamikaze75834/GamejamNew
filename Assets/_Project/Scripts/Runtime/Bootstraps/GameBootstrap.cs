@@ -13,11 +13,11 @@ public class GameBootstrap : MonoBehaviour
 
     private void Start()
     {
-        _audioService.Music.PlayGameMusic();
+        _audioService?.Music.PlayGameMusic();
     }
 
     private void OnDisable()
     {
-        _audioService.Music.Stop();
+        _audioService?.Music.Stop();
     }
 }

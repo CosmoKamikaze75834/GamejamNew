@@ -9,20 +9,20 @@ public class Sfx : MonoBehaviour
     
     public void PlayButtonClick()
     {
-        Play(_buttonClick);
+        PlayOneShot(_buttonClick);
     }
 
     public void PlayPopUpShow()
     {
-        Play(_popUpShow);
+        PlayOneShot(_popUpShow);
     }
 
     public void PlayPopUpHide()
     {
-        Play(_popUpHide);
+        PlayOneShot(_popUpHide);
     }
 
-    private void Play(AudioClip clip)
+    public void PlayOneShot(AudioClip clip)
     {
         _source.PlayOneShot(clip);
     }

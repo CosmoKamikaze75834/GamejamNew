@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 8867568699005617309}
   - component: {fileID: 5020198414242870537}
   - component: {fileID: 761838949838326558}
+  - component: {fileID: 4023139923423372940}
+  - component: {fileID: 6320859304654583599}
+  - component: {fileID: 7756399277022717336}
   m_Layer: 0
   m_Name: CloserSettingsButton
   m_TagString: Untagged
@@ -120,6 +123,45 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4023139923423372940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57622731961497309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce268e1303db0b4cb686c632a36121f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonVisual
+--- !u!114 &6320859304654583599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57622731961497309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b73597be3d80404f843f7ac37987021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonScaleAnimation
+  _enterConfig: {fileID: 11400000, guid: 590f8fbc064ab704bb5573b15eb9ceff, type: 2}
+  _exitConfig: {fileID: 11400000, guid: 415d4ce40dbe013448a371faab475ba9, type: 2}
+--- !u!114 &7756399277022717336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57622731961497309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc54ac5f6308b1f42b70216641802cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  _audioConfig: {fileID: 11400000, guid: 6333cc44ddae32b4a83e3d534e435c40, type: 2}
 --- !u!1 &1239779803966533939
 GameObject:
   m_ObjectHideFlags: 0
