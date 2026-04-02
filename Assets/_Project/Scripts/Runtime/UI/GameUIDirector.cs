@@ -14,12 +14,14 @@ public class GameUIDirector : MonoBehaviour
 
     private SceneLoader _sceneLoader;
     private ISaver<SavesData> _saver;
+    private IAudioService _audioService;
 
     [Inject]
-    public void Construct(SceneLoader sceneLoader, ISaver<SavesData> saver)
+    public void Construct(SceneLoader sceneLoader, ISaver<SavesData> saver, IAudioService audioService)
     {
         _sceneLoader = sceneLoader;
         _saver = saver;
+        _audioService = audioService;
     }
 
     private void Start()
@@ -54,15 +56,18 @@ public class GameUIDirector : MonoBehaviour
     private void OnClickOpenSettingsButton()
     {
         _settingsPopApp.Show();
+        _audioService.Sfx.PlayButtonClick();
     }
 
     private void OnClickCloseSettingsButton()
     {
         _settingsPopApp.Hide();
+        _audioService.Sfx.PlayButtonClick();
     }
 
     private void OnClickReturnToMenuButton()
     {
         _sceneLoader.Load(Constants.MenuSceneName);
+        _audioService.Sfx.PlayButtonClick();
     }
 }

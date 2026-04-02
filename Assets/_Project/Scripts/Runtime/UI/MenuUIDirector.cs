@@ -11,11 +11,13 @@ public class MenuUIDirector : MonoBehaviour
     [SerializeField] private SettingsPopApp _settingsPopApp;
 
     private SceneLoader _sceneLoader;
+    private IAudioService _audioService;
 
     [Inject]
-    public void Construct(SceneLoader sceneLoader)
+    public void Construct(SceneLoader sceneLoader, IAudioService audioService)
     {
         _sceneLoader = sceneLoader;
+        _audioService = audioService;
     }
 
     private void OnEnable()
@@ -37,20 +39,24 @@ public class MenuUIDirector : MonoBehaviour
     private void OnClickOpenerSettingsButton()
     {
         _settingsPopApp.Show();
+        _audioService.Sfx.PlayButtonClick();
     }
 
     private void OnClickCloserSettingsButton()
     {
         _settingsPopApp.Hide();
+        _audioService.Sfx.PlayButtonClick();
     }
 
     private void OnClickPlaytButton()
     {
         _sceneLoader.Load(Constants.GameSceneName);
+        _audioService.Sfx.PlayButtonClick();
     }
 
     private void OnClickExitButton()
     {
         Application.Quit();
+        _audioService.Sfx.PlayButtonClick();
     }
 }

@@ -142,6 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cbe224d0df0184e8fd277fc71cc356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Music
+  _source: {fileID: 1296648752891274001}
+  _menuClip: {fileID: 8300000, guid: 0906df0060f357d45ae27681ed5c6057, type: 3}
+  _gameClip: {fileID: 8300000, guid: 6f471420e93aa9e45922afa3a772b166, type: 3}
 --- !u!1 &5256788098833374286
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,3 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a81cc9f051d2a4439cac8f7b1b98e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sfx
+  _source: {fileID: 824726604018098123}
+  _buttonClick: {fileID: 8300000, guid: e0830be52df3f20459a1d5e15385da6e, type: 3}
+  _popUpShow: {fileID: 8300000, guid: 5ed571ca9bcdc0b4588ca5b6768f6d6e, type: 3}
+  _popUpHide: {fileID: 8300000, guid: 5ed571ca9bcdc0b4588ca5b6768f6d6e, type: 3}

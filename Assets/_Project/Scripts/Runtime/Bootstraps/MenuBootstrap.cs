@@ -9,11 +9,13 @@ public class MenuBootstrap : MonoBehaviour
     [SerializeField] private Slider _sfx;
 
     private ISaver<SavesData> _saver;
+    private IAudioService _audioService;
 
     [Inject]
-    public void Construct(ISaver<SavesData> saver)
+    public void Construct(ISaver<SavesData> saver, IAudioService audioService)
     {
         _saver = saver;
+        _audioService = audioService;
     }
 
     private void Start()
@@ -22,6 +24,7 @@ public class MenuBootstrap : MonoBehaviour
         _generalSound.value = data.GeneralSoundVolume;
         _music.value = data.MusicVolume;
         _sfx.value = data.SfxVolume;
+        _audioService.Music.PlayMenuMusic();
     }
 
     private void OnDisable()
@@ -32,5 +35,6 @@ public class MenuBootstrap : MonoBehaviour
             _sfx.value);
 
         _saver.Save(savesData);
+        _audioService?.Music.Stop();
     }
 }
