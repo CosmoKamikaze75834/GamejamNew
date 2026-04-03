@@ -2,22 +2,84 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public static class TweenExtensions
 {
+    private const string ScaleId = "Scale";
+    private const string ShakePositionId = "ShakePosition";
+    private const string ShakeRotationId = "ShakeRotation";
+    private const string ImageColorId = "ImageColor";
+    private const string TextColorId = "TextColor";
+
     public static Tweener PlayScale(this Transform target, ScaleAnimationConfig config)
     {
         if (target == null || config == null) 
             return null;
 
-        target.DOKill(false);
+        string id = $"{ScaleId}_{target.gameObject.GetInstanceID()}";
+        DOTween.Kill(id);
 
         Tweener tweener = target.DOScale(config.TargetScale, config.Duration)
             .SetDelay(config.Delay)
             .SetEase(config.Ease)
+            .SetId(id)
             .SetLink(target.gameObject);
 
         return tweener;
+    }
+
+    public static Tweener PlayShake(this Transform target, ShakeAnimationConfig config)
+    {
+        if (target == null || config == null)
+            return null;
+
+        string positionId = $"{ShakePositionId}_{target.gameObject.GetInstanceID()}";
+        DOTween.Kill(positionId);
+
+        string rotationId = $"{ShakeRotationId}_{target.gameObject.GetInstanceID()}";
+        DOTween.Kill(rotationId);
+
+        Tweener posTweener = target.DOShakePosition(
+            config.Duration,
+            config.Strength,
+            config.Vibrato,
+            config.Randomness,
+            config.Snapping,
+            false)
+            .SetEase(config.Ease)
+            .SetId(positionId)
+            .SetLink(target.gameObject);
+
+        Tweener rotTweener = target.DOShakeRotation(
+            config.Duration,
+            config.RotationStrength,
+            config.Vibrato,
+            config.Randomness,
+            false)
+            .SetEase(config.Ease)
+            .SetId(rotationId)
+            .SetLink(target.gameObject);
+
+        if (config.IsLoop)
+        {
+            posTweener.SetLoops(-1, LoopType.Restart);
+            rotTweener.SetLoops(-1, LoopType.Restart);
+        }
+
+        return posTweener;
+    }
+
+    public static void StopShake(this Transform target)
+    {
+        if (target == null)
+            return;
+
+        string positionId = $"{ShakePositionId}_{target.gameObject.GetInstanceID()}";
+        DOTween.Kill(positionId);
+
+        string rotationId = $"{ShakeRotationId}_{target.gameObject.GetInstanceID()}";
+        DOTween.Kill(rotationId);
     }
 
     public static Tweener PlayColor(this Image image, ColorAnimationConfig config)
@@ -25,11 +87,13 @@ public static class TweenExtensions
         if (image == null || config == null)
             return null;
 
-        image.DOKill(false);
+        string id = $"{ImageColorId}_{image.gameObject.GetInstanceID()}";
+        DOTween.Kill(id);
 
         Tweener tweener = image.DOColor(config.TargetColor, config.Duration)
             .SetDelay(config.Delay)
             .SetEase(config.Ease)
+            .SetId(id)
             .SetLink(image.gameObject);
 
         return tweener;
@@ -40,11 +104,13 @@ public static class TweenExtensions
         if (text == null || config == null)
             return null;
 
-        text.DOKill(false);
+        string id = $"{TextColorId}_{text.gameObject.GetInstanceID()}";
+        DOTween.Kill(id);
 
         Tweener tweener = text.DOColor(config.TargetColor, config.Duration)
             .SetDelay(config.Delay)
             .SetEase(config.Ease)
+            .SetId(id)
             .SetLink(text.gameObject);
 
         return tweener;

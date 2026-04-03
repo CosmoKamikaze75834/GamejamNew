@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5223966404132407468}
   - component: {fileID: 7366566182758397750}
   - component: {fileID: 8071393766794772844}
-  - component: {fileID: 6546488701552888149}
   - component: {fileID: 6407710593171091846}
+  - component: {fileID: 4037043415410772307}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -173,18 +173,6 @@ MonoBehaviour:
   _downConfig: {fileID: 11400000, guid: 7469b042b7b85ed4b856dc6993269ff0, type: 2}
   _upConfig: {fileID: 11400000, guid: 1559ab4df06e6144492fe4b093622d9f, type: 2}
   _clickConfig: {fileID: 11400000, guid: 24f928c6f50b4104798b5de9b6d09586, type: 2}
---- !u!225 &6546488701552888149
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097932619829970304}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &6407710593171091846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +191,19 @@ MonoBehaviour:
   _downConfig: {fileID: 11400000, guid: c803efe7dee1c9e418967732aeb1e23c, type: 2}
   _upConfig: {fileID: 11400000, guid: 9485dcd04c881154fae5586a41a3ee3b, type: 2}
   _clickConfig: {fileID: 11400000, guid: 6e1e4f9cb38d3bc418b24d9a5bb8c106, type: 2}
+--- !u!114 &4037043415410772307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097932619829970304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fbdc44941c6bc4d9929aae49fa86ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonShakeAnimation
+  _enterConfig: {fileID: 11400000, guid: 72842405187ab0842982d47d97595c20, type: 2}
 --- !u!1 &7209265732853684400
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0418\u0433\u0440\u0430\u0442\u044C"
+  m_text: "\u041A\u043D\u043E\u043F\u043A\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 86309aee9ff7425449fee1fe2217b99f, type: 2}
   m_sharedMaterial: {fileID: 3084416853061269113, guid: 86309aee9ff7425449fee1fe2217b99f, type: 2}
