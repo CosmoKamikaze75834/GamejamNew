@@ -2,11 +2,11 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public static class TweenExtensions
 {
     private const string ScaleId = "Scale";
+    private const string AlphaId = "Alpha";
     private const string ShakePositionId = "ShakePosition";
     private const string ShakeRotationId = "ShakeRotation";
     private const string ImageColorId = "ImageColor";
@@ -21,6 +21,23 @@ public static class TweenExtensions
         DOTween.Kill(id);
 
         Tweener tweener = target.DOScale(config.TargetScale, config.Duration)
+            .SetDelay(config.Delay)
+            .SetEase(config.Ease)
+            .SetId(id)
+            .SetLink(target.gameObject);
+
+        return tweener;
+    }
+
+    public static Tweener PlayAlpha(this CanvasGroup target, AlphaAnimationConfig config)
+    {
+        if (target == null || config == null)
+            return null;
+
+        string id = $"{AlphaId}_{target.gameObject.GetInstanceID()}";
+        DOTween.Kill(id);
+
+        Tweener tweener = target.DOFade(config.TargetAlpha, config.Duration)
             .SetDelay(config.Delay)
             .SetEase(config.Ease)
             .SetId(id)

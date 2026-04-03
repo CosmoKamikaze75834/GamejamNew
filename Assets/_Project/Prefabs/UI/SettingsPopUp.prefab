@@ -697,6 +697,9 @@ GameObject:
   - component: {fileID: 3302825340399088857}
   - component: {fileID: 9169021350488171562}
   - component: {fileID: 7463176395973794049}
+  - component: {fileID: 710497500085744676}
+  - component: {fileID: 1700319071938924964}
+  - component: {fileID: 9176207004573855347}
   m_Layer: 0
   m_Name: SettingsPopUp
   m_TagString: Untagged
@@ -774,9 +777,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 3804035147777940341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09dc1922c7837af4f935496f3383e2e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 85eb2c22a2028e5489020d4a58e79f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsPopApp
+  _scaleAnimator: {fileID: 1700319071938924964}
+  _alphaAnimator: {fileID: 9176207004573855347}
+--- !u!225 &710497500085744676
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804035147777940341}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1700319071938924964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804035147777940341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fec4574727b5c47819c6ac999f9afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpScaleAnimator
+  _showConfig: {fileID: 11400000, guid: 0928722e29c37a34c9854817e6fba6d6, type: 2}
+  _hideConfig: {fileID: 11400000, guid: 3f69d3c44a2a45b49abec6b223252ed3, type: 2}
+--- !u!114 &9176207004573855347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804035147777940341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321fc3edbb9d6f544910f3aafe144112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpAlphaAnimator
+  _showConfig: {fileID: 11400000, guid: e3e4bedd9ed86c14db1ee6a08995b46f, type: 2}
+  _hideConfig: {fileID: 11400000, guid: 18d4c684573a6294881be3b5db36e381, type: 2}
 --- !u!1 &3843663168968937792
 GameObject:
   m_ObjectHideFlags: 0

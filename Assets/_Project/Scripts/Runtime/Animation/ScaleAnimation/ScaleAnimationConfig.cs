@@ -4,10 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ScaleAnimationConfig", menuName = Constants.EditorMenuName + "/ScaleAnimation")]
 public class ScaleAnimationConfig : ScriptableObject
 {
+    [SerializeField] private Vector3 _startScale = Vector3.zero;
     [SerializeField] private Vector3 _targetScale = Vector3.one;
-    [SerializeField] private float _duration = 0.2f;
-    [SerializeField] private float _delay = 0f;
+    [SerializeField][Min(0)] private float _duration = 0.2f;
+    [SerializeField][Min(0)] private float _delay = 0f;
     [SerializeField] private Ease _ease = Ease.OutBack;
+
+    public Vector3 StartScale => _startScale;
 
     public Vector3 TargetScale => _targetScale;
 

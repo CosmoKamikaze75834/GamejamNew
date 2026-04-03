@@ -175,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09dc1922c7837af4f935496f3383e2e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 85eb2c22a2028e5489020d4a58e79f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsPopApp
 --- !u!224 &321323556 stripped
@@ -453,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
   _savingMediator: {fileID: 1663009625}
   _volumeMediator: {fileID: 313543364}
+  _settingsPopUp: {fileID: 321323553}
 --- !u!4 &548991866
 Transform:
   m_ObjectHideFlags: 0

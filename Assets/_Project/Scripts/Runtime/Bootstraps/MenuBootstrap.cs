@@ -5,6 +5,7 @@ public class MenuBootstrap : MonoBehaviour
 {
     [SerializeField] private SavingMediator _savingMediator;
     [SerializeField] private VolumeMediator _volumeMediator;
+    [SerializeField] private PopUp _settingsPopUp;
 
     private IAudioService _audioService;
 
@@ -18,6 +19,7 @@ public class MenuBootstrap : MonoBehaviour
     {
         _savingMediator.Init();
         _volumeMediator.Init();
+        _settingsPopUp.Init();
 
         _audioService.Music.PlayMenuMusic();
     }
