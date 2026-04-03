@@ -19,6 +19,7 @@ public class GameLifetimeScope : LifetimeScope
         BindInputReader();
         BindUpdateService();
         BindAudioService();
+        BindLanguageSwitcher();
         BindSaver();
     }
 
@@ -33,6 +34,9 @@ public class GameLifetimeScope : LifetimeScope
 
     private void BindAudioService() =>
         _builder.RegisterComponent<IAudioService>(_audioService);
+
+    private void BindLanguageSwitcher() =>
+        _builder.Register<LanguageSwitcher>(Lifetime.Singleton);
 
     private void BindSaver()
     {

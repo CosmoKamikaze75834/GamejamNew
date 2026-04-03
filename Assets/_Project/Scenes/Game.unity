@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &68176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3351863690091820503, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+  m_PrefabInstance: {fileID: 1486223390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313543363
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +837,8 @@ MonoBehaviour:
   - {fileID: 1332545283}
   - {fileID: 1486223395}
   - {fileID: 1284269837}
+  - {fileID: 1418002956}
+  - {fileID: 68176}
 --- !u!1 &1284269837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3804035147777940341, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
@@ -909,6 +916,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
       objectReference: {fileID: 0}
+    - target: {fileID: 7659773503301895638, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
+      propertyPath: _langs._en
+      value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659773503301895638, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
+      propertyPath: _langs._ru
+      value: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -940,6 +955,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsOpenerButton
   _popUp: {fileID: 321323553}
+--- !u!1 &1418002956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8643717334740104179, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+  m_PrefabInstance: {fileID: 1486223390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1486223390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1322,6 +1342,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5923727500200355462, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_text
+      value: "\u0412 \u043C\u0435\u043D\u044E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659773503301895638, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
+      propertyPath: _langs._en
+      value: To Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659773503301895638, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
+      propertyPath: _langs._ru
       value: "\u0412 \u043C\u0435\u043D\u044E"
       objectReference: {fileID: 0}
     m_RemovedComponents: []

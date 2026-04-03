@@ -4,7 +4,7 @@ using UnityEngine;
 public class SavesDataConfig : ScriptableObject
 {
     [SerializeField] private SavesData _initialSavesData;
-    [SerializeField] private string _filename = "saves";
+    [SerializeField] private string _filename = "saves";    
 
     public string Filename => _filename;
 
