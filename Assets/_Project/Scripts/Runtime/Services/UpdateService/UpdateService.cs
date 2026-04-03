@@ -65,7 +65,7 @@ namespace CustomUpdateService
             if (_handlers.TryGetValue(updateType, out list))
                 return true;
 
-            Debug.LogError($"{Mark} Неподдерживаемый тип обновления: {updateType}");
+            Debug.LogError($"{Mark} РќРµРїРѕРґРґРµСЂР¶РёРІР°РµРјС‹Р№ С‚РёРї РѕР±РЅРѕРІР»РµРЅРёСЏ: {updateType}");
             return false;
         }
 
@@ -73,14 +73,14 @@ namespace CustomUpdateService
         {
             if (handler == null)
             {
-                Debug.LogError($"{Mark} Попытка подписать null-делегат");
+                Debug.LogError($"{Mark} РџРѕРїС‹С‚РєР° РїРѕРґРїРёСЃР°С‚СЊ null-РґРµР»РµРіР°С‚");
                 return;
             }
 
             if (handlers.Contains(handler))
             {
 #if UNITY_EDITOR
-                Debug.LogWarning($"{Mark} Подписчик \"{handler.Target}.{handler.Method.Name}\" уже подписан на {updateType}");
+                Debug.LogWarning($"{Mark} РџРѕРґРїРёСЃС‡РёРє \"{handler.Target}.{handler.Method.Name}\" СѓР¶Рµ РїРѕРґРїРёСЃР°РЅ РЅР° {updateType}");
 #endif
                 return;
             }
@@ -88,7 +88,7 @@ namespace CustomUpdateService
             handlers.Add(handler);
 #if UNITY_EDITOR
             if (_logSubscribers)
-                Debug.Log($"{Mark} [{updateType}] Добавлен подписчик: \"{handler.Target}\". Всего: {handlers.Count}");
+                Debug.Log($"{Mark} [{updateType}] Р”РѕР±Р°РІР»РµРЅ РїРѕРґРїРёСЃС‡РёРє: \"{handler.Target}\". Р’СЃРµРіРѕ: {handlers.Count}");
 #endif
         }
 
@@ -98,7 +98,7 @@ namespace CustomUpdateService
             {
 #if UNITY_EDITOR
                 if (_logSubscribers)
-                    Debug.Log($"{Mark} [{updateType}] Удалён подписчик: \"{handler.Target}\". Осталось: {handlers.Count}");
+                    Debug.Log($"{Mark} [{updateType}] РЈРґР°Р»С‘РЅ РїРѕРґРїРёСЃС‡РёРє: \"{handler.Target}\". РћСЃС‚Р°Р»РѕСЃСЊ: {handlers.Count}");
 #endif
             }
         }
@@ -120,7 +120,7 @@ namespace CustomUpdateService
 
                 if (handler.Target is UnityEngine.Object unityObj && unityObj == null)
                 {
-                    Debug.LogError($"{Mark} Подписчик {handler.Target} был уничтожен, но не отписался!");
+                    Debug.LogError($"{Mark} РџРѕРґРїРёСЃС‡РёРє {handler.Target} Р±С‹Р» СѓРЅРёС‡С‚РѕР¶РµРЅ, РЅРѕ РЅРµ РѕС‚РїРёСЃР°Р»СЃСЏ!");
                     list.RemoveAt(i);
 
                     continue;

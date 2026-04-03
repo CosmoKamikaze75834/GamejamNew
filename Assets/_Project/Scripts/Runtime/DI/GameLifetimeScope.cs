@@ -8,6 +8,7 @@ public class GameLifetimeScope : LifetimeScope
     [SerializeField] private UpdateService _updateService;
     [SerializeField] private AudioService _audioService;
     [SerializeField] private SavesDataConfig _savesDataConfig;
+    [SerializeField] private SceneLoader _sceneLoader;
 
     private IContainerBuilder _builder;
 
@@ -24,7 +25,7 @@ public class GameLifetimeScope : LifetimeScope
     }
 
     private void BindSceneLoader() =>
-        _builder.Register<SceneLoader>(Lifetime.Singleton);
+        _builder.RegisterComponent(_sceneLoader);
 
     private void BindInputReader() =>
         _builder.Register<InputReader>(Lifetime.Singleton).As<IInputReader>();
