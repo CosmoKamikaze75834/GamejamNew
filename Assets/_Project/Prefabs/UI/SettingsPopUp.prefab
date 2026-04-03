@@ -94,13 +94,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -151,6 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonScaleAnimation
   _enterConfig: {fileID: 11400000, guid: 590f8fbc064ab704bb5573b15eb9ceff, type: 2}
   _exitConfig: {fileID: 11400000, guid: 415d4ce40dbe013448a371faab475ba9, type: 2}
+  _downConfig: {fileID: 11400000, guid: d4ac98d8dcdc0864e88e4309ceafdeca, type: 2}
+  _upConfig: {fileID: 11400000, guid: 590f8fbc064ab704bb5573b15eb9ceff, type: 2}
+  _clickConfig: {fileID: 11400000, guid: 590f8fbc064ab704bb5573b15eb9ceff, type: 2}
 --- !u!114 &7756399277022717336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,8 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e9604412ed0874aa7b79d21952ab6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonColorAnimation
-  _enterConfig: {fileID: 11400000, guid: 10d09166ebeb8bd42a06a05905bc5904, type: 2}
-  _exitConfig: {fileID: 11400000, guid: 006ca7039c55d634eba198aa35aa2ddf, type: 2}
+  _enterConfig: {fileID: 11400000, guid: 5c8b3534eb0fff646b2f950ddbfec6d4, type: 2}
+  _exitConfig: {fileID: 11400000, guid: 70f0f69836b725447b4d7ffa0418c191, type: 2}
+  _downConfig: {fileID: 11400000, guid: 929e4297d959d0f4c99bd03ffcc93e38, type: 2}
+  _upConfig: {fileID: 11400000, guid: 0731ed06bd58ceb4bbd476b2673fbe79, type: 2}
+  _clickConfig: {fileID: 11400000, guid: aafcb6659ee95f541b041b5b80e74190, type: 2}
 --- !u!1 &1239779803966533939
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,8 +367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 5, y: 5}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &2365381694557337448
 GameObject:
@@ -399,7 +405,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3487714316610133666
 CanvasRenderer:
@@ -704,7 +710,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 900}
+  m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3302825340399088857
 CanvasRenderer:

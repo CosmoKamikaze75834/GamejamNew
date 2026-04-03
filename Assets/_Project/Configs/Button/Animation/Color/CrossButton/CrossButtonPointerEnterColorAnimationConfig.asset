@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c25ae25f63a5aef458ec549380b5a471, type: 3}
-  m_Name: ExitColorAnimationConfig
+  m_Name: CrossButtonPointerEnterColorAnimationConfig
   m_EditorClassIdentifier: Assembly-CSharp::ColorAnimationConfig
-  _targetColor: {r: 0.23773581, g: 0.23773581, b: 0.23773581, a: 1}
+  _targetColor: {r: 1, g: 0.3226415, b: 0.3226415, a: 1}
   _duration: 0.5
   _delay: 0
   _ease: 6
