@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 965d75c91c776dc4696628c1d59f3032, type: 3}
-  m_Name: PopUpHiddingAlphaAnimationConfig
+  m_Name: AnticlickerHidingAlphaAnimationConfig
   m_EditorClassIdentifier: Assembly-CSharp::AlphaAnimationConfig
   _startAlpha: 1
   _targetAlpha: 0
-  _duration: 0.35
+  _duration: 0.15
   _delay: 0
   _ease: 26

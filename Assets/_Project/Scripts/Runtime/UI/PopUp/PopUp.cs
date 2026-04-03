@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class PopUp : MonoBehaviour
     [SerializeField] private PopUpScaleAnimator _scaleAnimator;
     [SerializeField] private PopUpAlphaAnimator _alphaAnimator;
     [SerializeField] private PopUpAudio _audio;
+
+    public event Action<PopUp> Changed;
 
     public void Init()
     {
@@ -24,8 +27,10 @@ public class PopUp : MonoBehaviour
         if (_alphaAnimator != null)
             _alphaAnimator.TryPlayShow(out _);
 
-        if ( _audio != null)
+        if (_audio != null)
             _audio.PlayShowing();
+
+        Changed?.Invoke(this);
     }
 
     public void Hide()
@@ -59,6 +64,12 @@ public class PopUp : MonoBehaviour
         if (_audio != null)
             _audio.PlayHidding();
 
-        sequence.OnComplete(() => gameObject.SetActive(false));
+        sequence.OnComplete(() => HideInternal());
+    }
+
+    private void HideInternal()
+    {
+        gameObject.SetActive(false);
+        Changed?.Invoke(this);
     }
 }

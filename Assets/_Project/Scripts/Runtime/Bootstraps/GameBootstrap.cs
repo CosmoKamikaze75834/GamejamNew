@@ -1,10 +1,11 @@
 using UnityEngine;
 using VContainer;
 
-public class GameBootstrap : MonoBehaviour
+public class GameBootstrap : BootstrapBase
 {
     [SerializeField] private SavingMediator _savingMediator;
     [SerializeField] private VolumeMediator _volumeMediator;
+    [SerializeField] private AnticlickerMediator _anticlickerMediator;
     [SerializeField] private PopUp _settingsPopUp;
 
     private IAudioService _audioService;
@@ -19,6 +20,7 @@ public class GameBootstrap : MonoBehaviour
     {
         _savingMediator.Init();
         _volumeMediator.Init();
+        _anticlickerMediator.Init();
         _settingsPopUp.Init();
 
         _audioService?.Music.PlayGameMusic();

@@ -1,7 +1,6 @@
-using UnityEngine;
 using VContainer;
 
-public class EntryPointBootstrap : MonoBehaviour
+public class EntryPointBootstrap : BootstrapBase
 {
     private SceneLoader _sceneLoader;
 
