@@ -6,4 +6,5 @@ public static class Constants
     public const string EntryPointSceneName = "EntryPoint";
     public const string MenuSceneName = "Menu";
     public const string GameSceneName = "Game";
+    public const string EditorMenuName = "Configs";
 }

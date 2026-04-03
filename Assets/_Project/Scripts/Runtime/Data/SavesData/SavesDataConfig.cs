@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSavesData", menuName = "ScriptableObject/NewSavesData", order = 0)]
+[CreateAssetMenu(fileName = "SavesDataConfig", menuName = Constants.EditorMenuName + "/SavesData")]
 public class SavesDataConfig : ScriptableObject
 {
     [SerializeField] private SavesData _initialSavesData;

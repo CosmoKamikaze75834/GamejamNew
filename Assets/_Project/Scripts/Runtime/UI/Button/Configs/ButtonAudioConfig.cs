@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewButtonAudioConfig", menuName = "Configs/New ButtonAudioConfig", order = 0)]
+[CreateAssetMenu(fileName = "ButtonAudioConfig", menuName = Constants.EditorMenuName + "/ButtonAudioConfig")]
 public class ButtonAudioConfig : ScriptableObject
 {
     [SerializeField] private AudioClip _enter;

@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScaleAnimationConfig", menuName = "Configs/ScaleAnimation")]
+[CreateAssetMenu(fileName = "ScaleAnimationConfig", menuName = Constants.EditorMenuName + "/ScaleAnimation")]
 public class ScaleAnimationConfig : ScriptableObject
 {
     [SerializeField] private Vector3 _targetScale = Vector3.one;
