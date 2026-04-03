@@ -3,6 +3,9 @@ using VContainer;
 
 public class MenuBootstrap : MonoBehaviour
 {
+    [SerializeField] private SavingMediator _savingMediator;
+    [SerializeField] private VolumeMediator _volumeMediator;
+
     private IAudioService _audioService;
 
     [Inject]
@@ -13,11 +16,9 @@ public class MenuBootstrap : MonoBehaviour
 
     private void Start()
     {
-        _audioService.Music.PlayMenuMusic();
-    }
+        _savingMediator.Init();
+        _volumeMediator.Init();
 
-    private void OnDisable()
-    {
-        _audioService?.Music.Stop();
+        _audioService.Music.PlayMenuMusic();
     }
 }

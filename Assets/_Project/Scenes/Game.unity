@@ -134,7 +134,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &313543364
 MonoBehaviour:
@@ -161,11 +161,11 @@ Transform:
   m_GameObject: {fileID: 313543363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 450898771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &321323553 stripped
 MonoBehaviour:
@@ -389,6 +389,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1065541565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &450898770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450898771}
+  m_Layer: 0
+  m_Name: Mediators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &450898771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450898770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1663009624}
+  - {fileID: 313543365}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474810656
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +600,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &548991865
 MonoBehaviour:
@@ -581,6 +614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0bf87cb98ac0447ae26e84d2acc0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
+  _savingMediator: {fileID: 1663009625}
+  _volumeMediator: {fileID: 313543364}
 --- !u!4 &548991866
 Transform:
   m_ObjectHideFlags: 0
@@ -590,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 548991864}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1408,6 +1443,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 808239079}
   - {fileID: 548991864}
+  - {fileID: 1663009623}
   - {fileID: 313543363}
   - {fileID: 474810656}
   - {fileID: 721560246}
@@ -1546,14 +1582,61 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 57622731961497309, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
   m_PrefabInstance: {fileID: 1486223390}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1663009623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663009624}
+  - component: {fileID: 1663009625}
+  m_Layer: 0
+  m_Name: SavingMediator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663009624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663009623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 450898771}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1663009625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663009623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43509cd821040974690a3b219387064b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavingMediator
+  _generalSound: {fileID: 1486223394}
+  _music: {fileID: 1486223393}
+  _sfx: {fileID: 1486223392}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 687580327}
   - {fileID: 844567207}
+  - {fileID: 548991866}
   - {fileID: 1190972116}
   - {fileID: 808239083}
   - {fileID: 1065541565}
-  - {fileID: 548991866}
-  - {fileID: 313543365}
+  - {fileID: 450898771}

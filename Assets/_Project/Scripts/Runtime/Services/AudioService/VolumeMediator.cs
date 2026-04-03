@@ -15,22 +15,8 @@ public class VolumeMediator : MonoBehaviour
     private VolumeModifier _musicModifier;
     private VolumeModifier _sfxModifier;
 
-    private ISaver<SavesData> _saver;
-
-    [Inject]
-    public void Constract(ISaver<SavesData> saver)
+    public void Init()
     {
-        _saver = saver;
-    }
-
-    private void Start()
-    {
-        SavesData data = _saver.Data;
-
-        _generalSlaider.value = data.GeneralSoundVolume;
-        _musicSlider.value = data.MusicVolume;
-        _sfxSlider.value = data.SfxVolume;
-
         _generalModifier = new(_mixer, _generalSlaider, Constants.MasterGroup);
         _musicModifier = new(_mixer, _musicSlider, Constants.MusicGroup);
         _sfxModifier = new(_mixer, _sfxSlider, Constants.SfxGroup);

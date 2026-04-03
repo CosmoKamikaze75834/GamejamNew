@@ -4,10 +4,6 @@ using VContainer;
 
 public class MenuUIDirector : MonoBehaviour
 {
-    [SerializeField] private Slider _generalSound;
-    [SerializeField] private Slider _music;
-    [SerializeField] private Slider _sfx;
-
     [SerializeField] private Button _openerSettingsButton;
     [SerializeField] private Button _closerSettingsButton;
     [SerializeField] private Button _exitGameButton;
@@ -15,13 +11,11 @@ public class MenuUIDirector : MonoBehaviour
 
     [SerializeField] private SettingsPopApp _settingsPopApp;
 
-    private ISaver<SavesData> _saver;
     private SceneLoader _sceneLoader;
 
     [Inject]
-    public void Construct(ISaver<SavesData> saver, SceneLoader sceneLoader)
+    public void Construct(SceneLoader sceneLoader)
     {
-        _saver = saver;
         _sceneLoader = sceneLoader;
     }
 
@@ -39,16 +33,6 @@ public class MenuUIDirector : MonoBehaviour
         _closerSettingsButton.onClick.RemoveListener(OnClickCloserSettingsButton);
         _playButton.onClick.RemoveListener(OnClickPlayButton);
         _exitGameButton.onClick.RemoveListener(OnClickExitButton);
-    }
-
-    private void OnDestroy()
-    {
-        SavesData savesData = new(
-            _generalSound.value,
-            _music.value,
-            _sfx.value);
-
-        _saver.Save(savesData);
     }
 
     private void OnClickOpenerSettingsButton()

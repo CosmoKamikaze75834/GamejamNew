@@ -3,6 +3,9 @@ using VContainer;
 
 public class GameBootstrap : MonoBehaviour
 {
+    [SerializeField] private SavingMediator _savingMediator;
+    [SerializeField] private VolumeMediator _volumeMediator;
+
     private IAudioService _audioService;
 
     [Inject]
@@ -13,11 +16,9 @@ public class GameBootstrap : MonoBehaviour
 
     private void Start()
     {
-        _audioService?.Music.PlayGameMusic();
-    }
+        _savingMediator.Init();
+        _volumeMediator.Init();
 
-    private void OnDisable()
-    {
-        _audioService?.Music.Stop();
+        _audioService?.Music.PlayGameMusic();
     }
 }
