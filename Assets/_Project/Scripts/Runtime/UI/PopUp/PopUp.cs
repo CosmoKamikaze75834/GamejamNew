@@ -6,6 +6,7 @@ public class PopUp : MonoBehaviour
 {
     [SerializeField] private PopUpScaleAnimator _scaleAnimator;
     [SerializeField] private PopUpAlphaAnimator _alphaAnimator;
+    [SerializeField] private PopUpAudio _audio;
 
     public void Init()
     {
@@ -22,6 +23,9 @@ public class PopUp : MonoBehaviour
 
         if (_alphaAnimator != null)
             _alphaAnimator.TryPlayShow(out _);
+
+        if ( _audio != null)
+            _audio.PlayShowing();
     }
 
     public void Hide()
@@ -51,6 +55,9 @@ public class PopUp : MonoBehaviour
 
         foreach (Tweener tweener in tweeners)
             sequence.Join(tweener);
+
+        if (_audio != null)
+            _audio.PlayHidding();
 
         sequence.OnComplete(() => gameObject.SetActive(false));
     }

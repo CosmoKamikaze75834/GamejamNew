@@ -696,10 +696,11 @@ GameObject:
   - component: {fileID: 9055741861164011197}
   - component: {fileID: 3302825340399088857}
   - component: {fileID: 9169021350488171562}
-  - component: {fileID: 7463176395973794049}
   - component: {fileID: 710497500085744676}
+  - component: {fileID: 7463176395973794049}
   - component: {fileID: 1700319071938924964}
   - component: {fileID: 9176207004573855347}
+  - component: {fileID: 5002601431168646486}
   m_Layer: 0
   m_Name: SettingsPopUp
   m_TagString: Untagged
@@ -768,6 +769,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.14
+--- !u!225 &710497500085744676
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804035147777940341}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &7463176395973794049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,18 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SettingsPopApp
   _scaleAnimator: {fileID: 1700319071938924964}
   _alphaAnimator: {fileID: 9176207004573855347}
---- !u!225 &710497500085744676
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3804035147777940341}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  _audio: {fileID: 5002601431168646486}
 --- !u!114 &1700319071938924964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +824,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PopUpAlphaAnimator
   _showConfig: {fileID: 11400000, guid: e3e4bedd9ed86c14db1ee6a08995b46f, type: 2}
   _hideConfig: {fileID: 11400000, guid: 18d4c684573a6294881be3b5db36e381, type: 2}
+--- !u!114 &5002601431168646486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804035147777940341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae31478bc5ecc64e896d719ddc56bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PopUpAudio
+  _config: {fileID: 11400000, guid: 1b6d230f890b63449a4faa7426e66469, type: 2}
 --- !u!1 &3843663168968937792
 GameObject:
   m_ObjectHideFlags: 0
