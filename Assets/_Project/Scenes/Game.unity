@@ -616,7 +616,6 @@ GameObject:
   - component: {fileID: 808239083}
   - component: {fileID: 808239082}
   - component: {fileID: 808239081}
-  - component: {fileID: 808239080}
   - component: {fileID: 808239084}
   m_Layer: 5
   m_Name: UI
@@ -625,23 +624,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &808239080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808239079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &808239081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,13 +701,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 808239079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34404b041292c441b6994c13cf28b6b, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameUIDirector
-  _settingsPopApp: {fileID: 321323553}
-  _openerSettingsButton: {fileID: 1332545284}
-  _closerSettingsButton: {fileID: 1486223391}
-  _returnToMenu: {fileID: 2050698210}
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &844567206
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +821,6 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects:
-  - {fileID: 808239079}
   - {fileID: 548991864}
   - {fileID: 1663009623}
   - {fileID: 313543363}
@@ -878,14 +860,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1040396987889664803, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040396987889664803, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040396987889664803, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -919,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097932619829970304, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_Name
-      value: OpenerSettingsButton
+      value: SettingsOpenerButton
       objectReference: {fileID: 0}
     - target: {fileID: 5923727500200355462, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_text
@@ -928,7 +902,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4097932619829970304, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1332545285}
   m_SourcePrefab: {fileID: 100100000, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
 --- !u!224 &1332545282 stripped
 RectTransform:
@@ -940,17 +917,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4097932619829970304, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
   m_PrefabInstance: {fileID: 1332545281}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1332545284 stripped
+--- !u!114 &1332545285
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5730994050428228435, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
-  m_PrefabInstance: {fileID: 1332545281}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332545283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f9f51f2fe44a0e43a96f88b1ede2980, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsOpenerButton
+  _popUp: {fileID: 321323553}
 --- !u!1001 &1486223390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -961,11 +940,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 911260643737250035, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2681854003085372436, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3804035147777940341, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_Name
@@ -973,23 +952,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3804035147777940341, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6647118108231423305, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6935527232493416619, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7339198410505318342, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8254486369067807548, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9055741861164011197, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1036,17 +1015,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
---- !u!114 &1486223391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 761838949838326558, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
-  m_PrefabInstance: {fileID: 1486223390}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486223395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &1486223392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4733893827257071832, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
@@ -1165,14 +1133,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1040396987889664803, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040396987889664803, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040396987889664803, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1206,7 +1166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097932619829970304, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_Name
-      value: ReturnToMenuButton
+      value: MenuSceneOpenerButton
       objectReference: {fileID: 0}
     - target: {fileID: 5923727500200355462, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
       propertyPath: m_text
@@ -1215,7 +1175,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4097932619829970304, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2050698211}
   m_SourcePrefab: {fileID: 100100000, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
 --- !u!224 &2050698208 stripped
 RectTransform:
@@ -1227,17 +1190,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4097932619829970304, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
   m_PrefabInstance: {fileID: 2050698207}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2050698210 stripped
+--- !u!114 &2050698211
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5730994050428228435, guid: 659e6e6e1b527bb4aa40af527fa0dd5e, type: 3}
-  m_PrefabInstance: {fileID: 2050698207}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050698209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e0c0819d2670c4f4e999a1952627f432, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::MenuSceneOpenerButton
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

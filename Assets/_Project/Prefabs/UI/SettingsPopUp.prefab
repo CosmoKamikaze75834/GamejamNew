@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 7756399277022717336}
   - component: {fileID: 1735463508227002267}
   - component: {fileID: 43534716179134319}
+  - component: {fileID: 6000679231984170247}
   m_Layer: 0
-  m_Name: CloserButton
+  m_Name: SettingsCloserButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonShakeAnimation
   _enterConfig: {fileID: 11400000, guid: 72842405187ab0842982d47d97595c20, type: 2}
+--- !u!114 &6000679231984170247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57622731961497309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b16b512f9125c24ba957ad163b7d6ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsCloserButton
+  _popUp: {fileID: 7463176395973794049}
 --- !u!1 &1239779803966533939
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7167903512213777135}
   m_Layer: 0
-  m_Name: Closer
+  m_Name: SettingsCloserButtonBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
