@@ -4,14 +4,22 @@ public class Person: MonoBehaviour
 {
     [SerializeField] private Transform _player;
     [SerializeField] private float _speed;
+    [SerializeField] private float _stopdDstance = 2;
 
     private bool _isChasing = false;
+
+    public bool IsChasing => _isChasing;
 
     private void Update()
     {
         if (_isChasing == true)
         {
-            ChangeRoute();
+            float distance = Vector2.Distance(transform.position, _player.position);
+
+            if(distance > _stopdDstance)
+            {
+                ChangeRoute();
+            }
         }
     }
 
