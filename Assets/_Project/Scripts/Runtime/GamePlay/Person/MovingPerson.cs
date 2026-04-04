@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MovingPerson : MonoBehaviour
 {
+    [SerializeField] private Person _person;
     [SerializeField] private float _speed;
     [SerializeField] private float _changeDirectionTime = 2f;
 
@@ -16,12 +17,22 @@ public class MovingPerson : MonoBehaviour
 
     private void Start()
     {
+        if(_person.IsChasing == true)
+        {
+            return;
+        }
+
         SetRandomDirection();
         StartCoroutine(ChangeDirectionRoutine());
     }
 
     private void FixedUpdate()
     {
+        if (_person.IsChasing == true)
+        {
+            return;
+        }
+
         _rb.linearVelocity = _moveDirection * _speed;
     }
 

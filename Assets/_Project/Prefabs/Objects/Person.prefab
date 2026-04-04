@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5723a47bdccb1641a3cefb28e95915a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPerson
+  _person: {fileID: -2552464393051090206}
   _speed: 3
   _changeDirectionTime: 2
 --- !u!114 &-2552464393051090206
@@ -196,3 +197,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Person
   _player: {fileID: 1936872352820707072, guid: 0c8eda3e7118dd74cb5f21d98cf3383a, type: 3}
   _speed: 6
+  _stopdDstance: 3
