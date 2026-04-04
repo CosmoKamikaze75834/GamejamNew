@@ -5,20 +5,28 @@ using UnityEngine;
 
 public class PopUp : MonoBehaviour
 {
+    [SerializeField] private List<PopUp> _popUpsToHide;
     [SerializeField] private PopUpScaleAnimator _scaleAnimator;
     [SerializeField] private PopUpAlphaAnimator _alphaAnimator;
     [SerializeField] private PopUpAudio _audio;
 
     public event Action<PopUp> Changed;
 
+    private bool _isActive;
+
     public void Init()
     {
         _scaleAnimator.Init();
         _alphaAnimator.Init();
+        _isActive = gameObject.activeSelf;
     }
 
     public void Show()
     {
+        if(_isActive) 
+            return;
+
+        _isActive = true;
         gameObject.SetActive(true);
 
         if (_scaleAnimator != null)
@@ -31,10 +39,18 @@ public class PopUp : MonoBehaviour
             _audio.PlayShowing();
 
         Changed?.Invoke(this);
+
+        foreach (PopUp popUp in _popUpsToHide)
+            popUp.Hide();
     }
 
     public void Hide()
     {
+        if (_isActive == false)
+            return;
+
+        _isActive = false;
+
         List<Tweener> tweeners = new();
 
         if (_scaleAnimator != null)
