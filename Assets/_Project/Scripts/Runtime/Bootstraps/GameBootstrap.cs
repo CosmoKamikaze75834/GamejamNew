@@ -1,12 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
 public class GameBootstrap : BootstrapBase
 {
-    [SerializeField] private SavingMediator _savingMediator;
-    [SerializeField] private VolumeMediator _volumeMediator;
-    [SerializeField] private AnticlickerMediator _anticlickerMediator;
-    [SerializeField] private PopUp _settingsPopUp;
+    [SerializeField] private List<PopUp> _popUpList;
+    [SerializeField] private List<MediatorBase> _mediators;
     [SerializeField] private PopUp _menuButtons;
 
     private IAudioService _audioService;
@@ -26,11 +25,14 @@ public class GameBootstrap : BootstrapBase
 
     private void Start()
     {
-        _savingMediator.Init();
-        _volumeMediator.Init();
-        _anticlickerMediator.Init();
-        _settingsPopUp.Init();
-        _menuButtons.Init();
+        foreach (PopUp popUp in _popUpList)
+        {
+            popUp.Init();
+            popUp.FastHide();
+        }
+
+        foreach (MediatorBase mediator in _mediators)
+            mediator.Init();
 
         _inputReader.EscapePressed += OnEscapePressed;
 
@@ -39,7 +41,7 @@ public class GameBootstrap : BootstrapBase
 
     private void OnDestroy()
     {
-        if (_audioService != null)
+        if (_inputReader != null)
             _inputReader.EscapePressed -= OnEscapePressed;
     }
 

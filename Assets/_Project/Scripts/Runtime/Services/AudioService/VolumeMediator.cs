@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using VContainer;
 
-public class VolumeMediator : MonoBehaviour
+public class VolumeMediator : MediatorBase
 {
     [SerializeField] private AudioMixer _mixer;
 
@@ -15,7 +14,7 @@ public class VolumeMediator : MonoBehaviour
     private VolumeModifier _musicModifier;
     private VolumeModifier _sfxModifier;
 
-    public void Init()
+    public override void Init()
     {
         _generalModifier = new(_mixer, _generalSlaider, Constants.MasterGroup);
         _musicModifier = new(_mixer, _musicSlider, Constants.MusicGroup);

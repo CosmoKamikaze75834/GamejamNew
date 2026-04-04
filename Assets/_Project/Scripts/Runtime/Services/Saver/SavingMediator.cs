@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-public class SavingMediator : MonoBehaviour
+public class SavingMediator : MediatorBase
 {
     [SerializeField] private Slider _generalSound;
     [SerializeField] private Slider _music;
@@ -18,7 +18,7 @@ public class SavingMediator : MonoBehaviour
         _languageSwitcher = languageSwitcher;
     }
 
-    public void Init()
+    public override void Init()
     {
         SavesData data = _saver.Data;
 

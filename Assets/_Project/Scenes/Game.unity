@@ -759,10 +759,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0bf87cb98ac0447ae26e84d2acc0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
-  _savingMediator: {fileID: 1663009625}
-  _volumeMediator: {fileID: 313543364}
-  _anticlickerMediator: {fileID: 2018260289}
-  _settingsPopUp: {fileID: 321323553}
+  _popUpList:
+  - {fileID: 827742382}
+  - {fileID: 321323553}
+  _mediators:
+  - {fileID: 1663009625}
+  - {fileID: 313543364}
+  - {fileID: 2018260289}
   _menuButtons: {fileID: 827742382}
 --- !u!4 &548991866
 Transform:
@@ -3091,8 +3094,8 @@ SceneRoots:
   - {fileID: 548991866}
   - {fileID: 1190972116}
   - {fileID: 808239083}
-  - {fileID: 1065541565}
   - {fileID: 450898771}
+  - {fileID: 1065541565}
   - {fileID: 1660208227}
   - {fileID: 5502969}
   - {fileID: 227120700}

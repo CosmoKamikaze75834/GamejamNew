@@ -5,8 +5,11 @@ public class Anticlicker : MonoBehaviour
 {
     [SerializeField] private PopUpAlphaAnimator _alphaAnimator;
 
-    public void Init() =>
+    public void Init()
+    {
         _alphaAnimator.Init();
+        gameObject.SetActive(false);
+    }
 
     public void Show()
     {

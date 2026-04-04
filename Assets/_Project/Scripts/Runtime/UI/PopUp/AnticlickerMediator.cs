@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnticlickerMediator : MonoBehaviour
+public class AnticlickerMediator : MediatorBase
 {
     [SerializeField] private Anticlicker _anticlicker;
     [SerializeField] private List<PopUp> _popUps;
@@ -20,7 +20,7 @@ public class AnticlickerMediator : MonoBehaviour
             popUp.Changed -= OnPopUpChanged;
     }
 
-    public void Init()
+    public override void Init()
     {
         _anticlicker.Init();
 
@@ -33,7 +33,6 @@ public class AnticlickerMediator : MonoBehaviour
         if (_openedCount > 0)
             _anticlicker.Show();
     }
-
 
     private void OnPopUpChanged(PopUp popUp)
     {

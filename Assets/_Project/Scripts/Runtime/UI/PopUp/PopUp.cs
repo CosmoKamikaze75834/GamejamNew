@@ -89,6 +89,12 @@ public class PopUp : MonoBehaviour
         });
     }
 
+    public void FastHide()
+    {
+        gameObject.SetActive(false);
+        IsActive = false;
+    }
+
     private void HideInternal()
     {
         gameObject.SetActive(false);
