@@ -23,7 +23,7 @@ public class PopUp : MonoBehaviour
 
     public void Show()
     {
-        if(IsActive) 
+        if (IsActive)
             return;
 
         IsActive = true;
@@ -46,6 +46,8 @@ public class PopUp : MonoBehaviour
 
     public void Hide()
     {
+        Debug.Log(nameof(Hide));
+
         if (IsActive == false)
             return;
 
@@ -72,7 +74,8 @@ public class PopUp : MonoBehaviour
             return;
         }
 
-        Sequence sequence = DOTween.Sequence();
+        Sequence sequence = DOTween.Sequence()
+            .SetUpdate(true);
 
         foreach (Tweener tweener in tweeners)
             sequence.Join(tweener);
@@ -80,7 +83,10 @@ public class PopUp : MonoBehaviour
         if (_audio != null)
             _audio.PlayHidding();
 
-        sequence.OnComplete(() => HideInternal());
+        sequence.OnComplete(() =>
+        {
+            HideInternal();
+        });
     }
 
     private void HideInternal()
