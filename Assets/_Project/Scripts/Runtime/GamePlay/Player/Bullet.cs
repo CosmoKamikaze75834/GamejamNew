@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Bullet: MonoBehaviour
 {
-    public event Action<Person> BulletAchieved;
+    public event Action<Person> Entered;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out Person person))
+        if(collision.TryGetComponent<Person>(out var person))
         {
-            BulletAchieved?.Invoke(person);
-            person.StartChasing();
+            Entered?.Invoke(person);
             Destroy(gameObject);
         }
     }

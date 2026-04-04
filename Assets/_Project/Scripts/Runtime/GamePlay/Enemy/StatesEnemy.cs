@@ -9,13 +9,18 @@ public class StatesEnemy : MonoBehaviour
     [SerializeField] private EnemyVision _enemyVision;
     [SerializeField] private float _chaseSpeed = 3f;
 
-    [SerializeField] private Transform _currentTarget;
-
+    private Transform _currentTarget;
 
     private void Update()
     {
         if(_currentTarget == null)
         {
+            _currentTarget = _enemyVision.FindObjects();
+        }
+
+        if (_currentTarget == null)
+        {
+            Debug.Log("Цели нет");
             _moveEnemy.enabled = true;
             return;
         }
@@ -35,8 +40,31 @@ public class StatesEnemy : MonoBehaviour
             else
             {
                 Debug.Log("преследуем человека");
+                DisableWander();
                 _stalker.MoveToTarget(_currentTarget, _chaseSpeed);
             }
+        }
+    }
+
+    public void ResetTarger()
+    {
+        _currentTarget = null;
+        EnableWander();
+    }
+
+    private void EnableWander()
+    {
+        if(_moveEnemy.enabled == false)
+        {
+            _moveEnemy.enabled = true;
+        }
+    }
+
+    private void DisableWander()
+    {
+        if (_moveEnemy.enabled == true)
+        {
+            _moveEnemy.enabled = false;
         }
     }
 }

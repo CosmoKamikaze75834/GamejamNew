@@ -27,8 +27,17 @@ public class Shooting: MonoBehaviour
     private void Shoot()
     {
         Bullet bullet = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(_firePoint.up * _bulletForce, ForceMode2D.Impulse);
+        bullet.Entered += OnPersonHit;
+
+        if(bullet.TryGetComponent(out Rigidbody2D rb))
+        {
+            rb.AddForce(_firePoint.up * _bulletForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnPersonHit(Person person)
+    {
+        person.StartChasing(transform);
     }
 
     private IEnumerator TimeShoot()

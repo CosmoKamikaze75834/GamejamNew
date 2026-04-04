@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Person: MonoBehaviour
 {
-    [SerializeField] private Transform _player;
     [SerializeField] private float _speed;
     [SerializeField] private float _stopdDstance = 2;
+
+    private Transform _target;
 
     private bool _isChasing = false;
 
@@ -12,9 +13,9 @@ public class Person: MonoBehaviour
 
     private void Update()
     {
-        if (_isChasing == true)
+        if (_isChasing == true && _target != null)
         {
-            float distance = Vector2.Distance(transform.position, _player.position);
+            float distance = Vector2.Distance(transform.position, _target.position);
 
             if(distance > _stopdDstance)
             {
@@ -25,11 +26,12 @@ public class Person: MonoBehaviour
 
     public void ChangeRoute()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
     }
 
-    public void StartChasing()
+    public void StartChasing(Transform target)
     {
+        _target = target;
         _isChasing = true;
     }
 }
