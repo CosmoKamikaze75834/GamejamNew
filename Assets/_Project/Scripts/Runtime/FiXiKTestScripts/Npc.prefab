@@ -192,10 +192,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 385864219273222217}
-  - component: {fileID: 7982669016904728492}
   - component: {fileID: 2016955898477685650}
   - component: {fileID: 4583173450898295224}
+  - component: {fileID: 7982669016904728492}
   - component: {fileID: 8833241806232385252}
+  - component: {fileID: 1537221835829993825}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -219,18 +220,6 @@ Transform:
   - {fileID: 2501573095789442718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7982669016904728492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266341132521332984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f19a3f90f5c811f42ba2b6fbad8b970c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Character
 --- !u!58 &2016955898477685650
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -294,6 +283,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7982669016904728492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266341132521332984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a3f90f5c811f42ba2b6fbad8b970c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Character
 --- !u!114 &8833241806232385252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,3 +313,17 @@ MonoBehaviour:
   _maxDriftSpeed: 30
   _minSpeed: 1
   _maxSpeed: 4
+--- !u!114 &1537221835829993825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266341132521332984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515a208d05b0b8e4b86067aa857f76d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.CharacterView
+  _character: {fileID: 7982669016904728492}
+  _renderer: {fileID: 3690388927671851586}

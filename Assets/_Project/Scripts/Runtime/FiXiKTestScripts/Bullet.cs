@@ -26,9 +26,13 @@ namespace FiXiKTestScripts
             Destroy(gameObject, _lifeTime);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (collision.collider.TryGetComponent(out Npc npc))
+            if (other.TryGetComponent(out IAttacker attacker))
+                if (_attacker == attacker)
+                    return;
+
+            if (other.TryGetComponent(out Npc npc))
                 npc.Recruit(_attacker);
 
             Destroy(gameObject);
