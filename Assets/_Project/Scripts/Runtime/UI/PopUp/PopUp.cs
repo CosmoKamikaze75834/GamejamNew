@@ -12,21 +12,21 @@ public class PopUp : MonoBehaviour
 
     public event Action<PopUp> Changed;
 
-    private bool _isActive;
+    public bool IsActive { get; private set; }
 
     public void Init()
     {
         _scaleAnimator.Init();
         _alphaAnimator.Init();
-        _isActive = gameObject.activeSelf;
+        IsActive = gameObject.activeSelf;
     }
 
     public void Show()
     {
-        if(_isActive) 
+        if(IsActive) 
             return;
 
-        _isActive = true;
+        IsActive = true;
         gameObject.SetActive(true);
 
         if (_scaleAnimator != null)
@@ -46,10 +46,10 @@ public class PopUp : MonoBehaviour
 
     public void Hide()
     {
-        if (_isActive == false)
+        if (IsActive == false)
             return;
 
-        _isActive = false;
+        IsActive = false;
 
         List<Tweener> tweeners = new();
 

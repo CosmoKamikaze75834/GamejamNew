@@ -11,12 +11,17 @@ public class GameBootstrap : BootstrapBase
 
     private IAudioService _audioService;
     private IInputReader _inputReader;
+    private IPauseSwitcher _pauseSwitcher;
 
     [Inject]
-    public void Construct(IAudioService audioService, IInputReader inputReader)
+    public void Construct(
+        IAudioService audioService,
+        IInputReader inputReader,
+        IPauseSwitcher pauseSwitcher)
     {
         _audioService = audioService;
         _inputReader = inputReader;
+        _pauseSwitcher = pauseSwitcher;
     }
 
     private void Start()
@@ -44,5 +49,10 @@ public class GameBootstrap : BootstrapBase
             _menuButtons.Hide();
         else
             _menuButtons.Show();
+
+        if (_menuButtons.IsActive)
+            _pauseSwitcher.Pause();
+        else
+            _pauseSwitcher.Unpause();
     }
 }
