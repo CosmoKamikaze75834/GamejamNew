@@ -21,10 +21,11 @@ public static class TweenExtensions
         DOTween.Kill(id);
 
         Tweener tweener = target.DOScale(config.TargetScale, config.Duration)
-            .SetDelay(config.Delay)
+            .SetDelay(config.Delay, true)
             .SetEase(config.Ease)
             .SetId(id)
-            .SetLink(target.gameObject);
+            .SetLink(target.gameObject)
+            .SetUpdate(true);
 
         return tweener;
     }
@@ -38,10 +39,11 @@ public static class TweenExtensions
         DOTween.Kill(id);
 
         Tweener tweener = target.DOFade(config.TargetAlpha, config.Duration)
-            .SetDelay(config.Delay)
+            .SetDelay(config.Delay, true)
             .SetEase(config.Ease)
             .SetId(id)
-            .SetLink(target.gameObject);
+            .SetLink(target.gameObject)
+            .SetUpdate(true);
 
         return tweener;
     }
@@ -66,7 +68,8 @@ public static class TweenExtensions
             false)
             .SetEase(config.Ease)
             .SetId(positionId)
-            .SetLink(target.gameObject);
+            .SetLink(target.gameObject)
+            .SetUpdate(true);
 
         Tweener rotTweener = target.DOShakeRotation(
             config.Duration,
@@ -76,7 +79,8 @@ public static class TweenExtensions
             false)
             .SetEase(config.Ease)
             .SetId(rotationId)
-            .SetLink(target.gameObject);
+            .SetLink(target.gameObject)
+            .SetUpdate(true);
 
         if (config.IsLoop)
         {
@@ -108,10 +112,11 @@ public static class TweenExtensions
         DOTween.Kill(id);
 
         Tweener tweener = image.DOColor(config.TargetColor, config.Duration)
-            .SetDelay(config.Delay)
+            .SetDelay(config.Delay, true)
             .SetEase(config.Ease)
             .SetId(id)
-            .SetLink(image.gameObject);
+            .SetLink(image.gameObject)
+            .SetUpdate(true);
 
         return tweener;
     }
@@ -125,10 +130,11 @@ public static class TweenExtensions
         DOTween.Kill(id);
 
         Tweener tweener = text.DOColor(config.TargetColor, config.Duration)
-            .SetDelay(config.Delay)
+            .SetDelay(config.Delay, true)
             .SetEase(config.Ease)
             .SetId(id)
-            .SetLink(text.gameObject);
+            .SetLink(text.gameObject)
+            .SetUpdate(true);
 
         return tweener;
     }

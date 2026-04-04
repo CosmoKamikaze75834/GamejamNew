@@ -3,5 +3,8 @@ using VContainer.Unity;
 
 public class GameScope : LifetimeScope
 {
-    protected override void Configure(IContainerBuilder builder) { }
+    protected override void Configure(IContainerBuilder builder) 
+    {
+        builder.Register<TimeScalePauseSwitcher>(Lifetime.Singleton).As<IPauseSwitcher>();
+    }
 }
