@@ -7,6 +7,8 @@ public class MenuBootstrap : BootstrapBase
     [SerializeField] private VolumeMediator _volumeMediator;
     [SerializeField] private AnticlickerMediator _anticlickerMediator;
     [SerializeField] private PopUp _settingsPopUp;
+    [SerializeField] private PopUp _quitGameDialog;
+    [SerializeField] private PopUp _buttonsVerticalLayout;
 
     private IAudioService _audioService;
 
@@ -22,6 +24,10 @@ public class MenuBootstrap : BootstrapBase
         _volumeMediator.Init();
         _anticlickerMediator.Init();
         _settingsPopUp.Init();
+        _quitGameDialog.Init();
+        _buttonsVerticalLayout.Init();
+
+        _buttonsVerticalLayout.Show();
 
         _audioService.Music.PlayMenuMusic();
     }
