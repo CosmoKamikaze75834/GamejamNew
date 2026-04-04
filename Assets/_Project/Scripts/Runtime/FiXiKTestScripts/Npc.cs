@@ -21,6 +21,8 @@ namespace FiXiKTestScripts
         private Vector2 _desiredDirection;
         private float _timeUntilNextChange;
 
+        private Transform Owner;
+
         public void Init()
         {
             _character = GetComponent<Character>();
@@ -35,6 +37,12 @@ namespace FiXiKTestScripts
         {
             float deltaTime = Time.deltaTime;
 
+            if (Owner != null)
+            {
+                _character.RotateTo(Owner.position, deltaTime);
+                _character.MoveTo(Owner.position, deltaTime);
+            }
+
             DriftDesiredDirection(deltaTime);
             _character.Move(transform.right);
             _character.Rotate(_desiredDirection, deltaTime);
@@ -47,6 +55,12 @@ namespace FiXiKTestScripts
                 ScheduleNextChange();
                 SetRandomSpeed();
             }
+        }
+
+        public void Recruit(IAttacker attacker)
+        {
+            _character.SetColor(attacker.Color);
+            Owner = attacker.Transform;
         }
 
         private void SetRandomDirection()

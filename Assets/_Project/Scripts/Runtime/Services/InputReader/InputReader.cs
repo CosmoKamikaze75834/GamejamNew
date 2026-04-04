@@ -6,6 +6,7 @@ public class InputReader : IInputReader, IDisposable
     private const KeyCode CommandEscape = KeyCode.Escape;
     private const string CommandHorizontalMove = "Horizontal";
     private const string CommandVerticalMove = "Vertical";
+    private const int CommandShoot = 0;
     private const int CommandFollowPoint = 1;
 
     private readonly IUpdateService _updateService;
@@ -19,6 +20,7 @@ public class InputReader : IInputReader, IDisposable
 
     public event Action EscapePressed;
     public event Action FollowPointPressed;
+    public event Action ShootPressed;
 
     public Vector2 Movement { get; private set; }
 
@@ -33,6 +35,7 @@ public class InputReader : IInputReader, IDisposable
         ReadMovement();
         ReadLook();
         ReadFollowPoint();
+        ReadShoot();
     }
 
     private void ReadEscape()
@@ -55,5 +58,11 @@ public class InputReader : IInputReader, IDisposable
     {
         if (Input.GetMouseButton(CommandFollowPoint))
             FollowPointPressed?.Invoke();
+    }
+
+    private void ReadShoot()
+    {
+        if (Input.GetMouseButton(CommandShoot))
+            ShootPressed?.Invoke();
     }
 }

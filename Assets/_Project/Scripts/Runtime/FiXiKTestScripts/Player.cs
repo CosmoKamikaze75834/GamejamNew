@@ -4,13 +4,19 @@ using VContainer;
 namespace FiXiKTestScripts
 {
     [RequireComponent(typeof(Character))]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IAttacker
     {
         private Camera _camera;
         private Character _character;
+        private Shooter _shooter;
         private IInputReader _inputReader;
 
         private Vector2? _followTarget;
+
+        public Color Color => _character.Color;
+
+        public Transform Transform => transform;
+
 
         [Inject]
         public void Construct(IInputReader inputReader)
@@ -19,12 +25,15 @@ namespace FiXiKTestScripts
             _camera = Camera.main;
         }
 
-        public void Init()
+        public void Init(Shooter shooter)
         {
             _character = GetComponent<Character>();
             _character.Init();
 
+            _shooter = shooter;
+
             _inputReader.FollowPointPressed += OnFollowPointPressed;
+            _inputReader.ShootPressed += OnShootPressed;
             _character.DestinationReached += OnDestinationReached;
         }
 
@@ -49,17 +58,28 @@ namespace FiXiKTestScripts
         {
             _inputReader.FollowPointPressed -= OnFollowPointPressed;
             _character.DestinationReached -= OnDestinationReached;
+            _inputReader.ShootPressed -= OnShootPressed;
         }
 
-        private void OnFollowPointPressed()
+        private Vector2 CalculateDirection()
         {
-            Debug.Log("ddfdfsfdsfd");
             Vector2 screenPos = _inputReader.PointPosition;
             Vector3 worldPos = _camera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 0f));
-            _followTarget = (Vector2)worldPos;
+
+            return (Vector2)worldPos;
         }
+
+        private void OnFollowPointPressed() =>
+            _followTarget = CalculateDirection();
 
         private void OnDestinationReached() =>
             _followTarget = null;
+
+        private void OnShootPressed()
+        {
+            Vector2 worldMouse = CalculateDirection();
+            Vector2 direction = worldMouse - (Vector2)transform.position;
+            _shooter.TryShoot(transform.position, direction);
+        }
     }
 }

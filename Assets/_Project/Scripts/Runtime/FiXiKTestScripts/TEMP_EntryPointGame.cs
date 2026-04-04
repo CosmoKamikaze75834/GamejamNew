@@ -9,6 +9,7 @@ namespace FiXiKTestScripts
         [SerializeField] private ColorSetConfig _colorSet;
         [SerializeField] private Player _player;
         [SerializeField] private Enemy _enemy;
+        [SerializeField] private Bullet _bulletPrefab;
 
         private List<Color> _colors;
 
@@ -16,7 +17,9 @@ namespace FiXiKTestScripts
         {
             _colors = new(_colorSet.Colors);
 
-            _player.Init();
+            Shooter shooter = new(_player, _bulletPrefab);
+
+            _player.Init(shooter);
             _player.GetComponent<Character>().SetColor(GiveColor());
         }
 

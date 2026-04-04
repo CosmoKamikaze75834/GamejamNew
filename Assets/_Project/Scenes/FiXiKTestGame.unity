@@ -1755,6 +1755,7 @@ MonoBehaviour:
   _colorSet: {fileID: 11400000, guid: 43fac2e6bd430e64aaebcaec6f62b13f, type: 2}
   _player: {fileID: 1298913789}
   _enemy: {fileID: 0}
+  _bulletPrefab: {fileID: 2208295246528434938, guid: 95ad22a6fee710f45b3204dda9fce02d, type: 3}
 --- !u!4 &1115558217
 Transform:
   m_ObjectHideFlags: 0
@@ -3592,6 +3593,10 @@ PrefabInstance:
     - target: {fileID: 4040040530866436440, guid: 0c8eda3e7118dd74cb5f21d98cf3383a, type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040040530866436440, guid: 0c8eda3e7118dd74cb5f21d98cf3383a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187041203649538896, guid: 0c8eda3e7118dd74cb5f21d98cf3383a, type: 3}
       propertyPath: _camera
