@@ -1,4 +1,3 @@
-using FiXiK_Utilites.QuitPanel;
 using UnityEngine;
 using VContainer;
 
@@ -11,11 +10,13 @@ public class GameBootstrap : BootstrapBase
     [SerializeField] private PopUp _menuButtons;
 
     private IAudioService _audioService;
+    private IInputReader _inputReader;
 
     [Inject]
-    public void Construct(IAudioService audioService)
+    public void Construct(IAudioService audioService, IInputReader inputReader)
     {
         _audioService = audioService;
+        _inputReader = inputReader;
     }
 
     private void Start()
@@ -26,17 +27,22 @@ public class GameBootstrap : BootstrapBase
         _settingsPopUp.Init();
         _menuButtons.Init();
 
+        _inputReader.EscapePressed += OnEscapePressed;
+
         _audioService?.Music.PlayGameMusic();
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (_menuButtons.gameObject.activeInHierarchy)
-                _menuButtons.Hide();
-            else
-                _menuButtons.Show();
-        }
+        if (_audioService != null)
+            _inputReader.EscapePressed -= OnEscapePressed;
+    }
+
+    private void OnEscapePressed()
+    {
+        if (_menuButtons.gameObject.activeInHierarchy)
+            _menuButtons.Hide();
+        else
+            _menuButtons.Show();
     }
 }
