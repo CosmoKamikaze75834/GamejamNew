@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3322760828270938799}
   - component: {fileID: 7187041203649538896}
   - component: {fileID: 2449625163834937081}
+  - component: {fileID: 8190801643761159940}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -220,3 +221,18 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 6985250021634927865, guid: 8ebb69a6f15257d4f8ae5d97fca8e7de, type: 3}
   _bulletForce: 20
   _delay: 0.7
+--- !u!114 &8190801643761159940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040040530866436440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc869a08d96cd8144ad07ad1da851a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _min: 0
+  <Current>k__BackingField: 0
+  <Max>k__BackingField: 100

@@ -3,30 +3,35 @@ using UnityEngine;
 public class Person: MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private float _stopdDstance = 2;
+    [SerializeField] private float _stopDistance = 2f;
 
     private Transform _target;
-
+    private Rigidbody2D _rb;
     private bool _isChasing = false;
 
     public bool IsChasing => _isChasing;
 
-    private void Update()
+    private void Awake()
     {
-        if (_isChasing == true && _target != null)
-        {
-            float distance = Vector2.Distance(transform.position, _target.position);
-
-            if(distance > _stopdDstance)
-            {
-                ChangeRoute();
-            }
-        }
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    public void ChangeRoute()
+    private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+        if (_isChasing && _target != null)
+        {
+            float distance = Vector2.Distance(_rb.position, (Vector2)_target.position);
+
+            if (distance > _stopDistance)
+            {
+                Vector2 newPos = Vector2.MoveTowards(_rb.position, _target.position, _speed * Time.fixedDeltaTime);
+                _rb.MovePosition(newPos);
+            }
+            else
+            {
+                _rb.linearVelocity = Vector2.zero;
+            }
+        }
     }
 
     public void StartChasing(Transform target)
