@@ -37,8 +37,3 @@ public class Shooting: MonoBehaviour
         _canShoot = true;
     }
 }
-
-public class MovingPerson : MonoBehaviour
-{
-
-}
