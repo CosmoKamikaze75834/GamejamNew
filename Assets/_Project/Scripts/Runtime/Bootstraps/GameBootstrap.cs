@@ -1,3 +1,4 @@
+using FiXiK_Utilites.QuitPanel;
 using UnityEngine;
 using VContainer;
 
@@ -7,6 +8,7 @@ public class GameBootstrap : BootstrapBase
     [SerializeField] private VolumeMediator _volumeMediator;
     [SerializeField] private AnticlickerMediator _anticlickerMediator;
     [SerializeField] private PopUp _settingsPopUp;
+    [SerializeField] private PopUp _menuButtons;
 
     private IAudioService _audioService;
 
@@ -22,7 +24,19 @@ public class GameBootstrap : BootstrapBase
         _volumeMediator.Init();
         _anticlickerMediator.Init();
         _settingsPopUp.Init();
+        _menuButtons.Init();
 
         _audioService?.Music.PlayGameMusic();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_menuButtons.gameObject.activeInHierarchy)
+                _menuButtons.Hide();
+            else
+                _menuButtons.Show();
+        }
     }
 }
