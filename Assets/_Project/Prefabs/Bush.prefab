@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4869062572887703599}
   - component: {fileID: 768140754903305200}
-  - component: {fileID: 3590780532598076339}
+  - component: {fileID: -1491022214810410169}
+  - component: {fileID: 5006117033505832315}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -92,8 +93,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!60 &3590780532598076339
-PolygonCollider2D:
+--- !u!114 &-1491022214810410169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124880420634071414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a14702cd0563241b9c7a829ac5183a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteSorter
+  _offset: 0.4
+--- !u!61 &5006117033505832315
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,7 +140,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.048621833, y: -0.08955502}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -136,16 +150,5 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.14, y: 0.125}
-      - {x: -0.26999998, y: 0.044999998}
-      - {x: -0.29, y: -0.015}
-      - {x: -0.29, y: -0.085}
-      - {x: -0.24, y: -0.145}
-      - {x: -0.14, y: -0.155}
-      - {x: 0.089999996, y: -0.155}
-      - {x: 0.19999999, y: -0.105}
-      - {x: 0.19999999, y: 0.015}
-      - {x: -0.01, y: 0.125}
-  m_UseDelaunayMesh: 1
+  m_Size: {x: 0.46284533, y: 0.05836235}
+  m_EdgeRadius: 0
