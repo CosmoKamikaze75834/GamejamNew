@@ -6,12 +6,13 @@ namespace FiXiKTestScripts
     public class Npc : MonoBehaviour, IEntity
     {
         [SerializeField] private Character _character;
-        [SerializeField] private Wanderer _wanderer;
         [SerializeField] private FleeBehavior _fleeBehavior;
 
         [Header("Following Settings")]
         [SerializeField] private float _maxFollowSpeed = 60f;
         [SerializeField] private float _maxFollowDistance = 10f;
+
+        private Wanderer _wanderer;
 
         public IAttacker Owner { get; private set; }
 
@@ -19,9 +20,10 @@ namespace FiXiKTestScripts
 
         public Color Color => _character.Color;
 
-        private void Awake()
+        public void Init(WandererStats stats)
         {
             Transform = transform;
+            _wanderer = new(_character, stats);
 
             if (_fleeBehavior != null)
                 _fleeBehavior.SetOwner(Owner);
@@ -54,6 +56,9 @@ namespace FiXiKTestScripts
                 _wanderer.UpdateWander(deltaTime);
             }
         }
+
+        public void SetColor(Color color) =>
+            _character.SetColor(color);
 
         public void Recruit(IAttacker attacker)
         {

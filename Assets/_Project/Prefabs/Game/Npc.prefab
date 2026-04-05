@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 7982669016904728492}
   - component: {fileID: 8833241806232385252}
   - component: {fileID: 1537221835829993825}
-  - component: {fileID: 3023070504980559693}
   - component: {fileID: 1283344826595944523}
   m_Layer: 0
   m_Name: Npc
@@ -311,7 +310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Npc
   _character: {fileID: 7982669016904728492}
-  _wanderer: {fileID: 3023070504980559693}
   _fleeBehavior: {fileID: 1283344826595944523}
   _maxFollowSpeed: 70
   _maxFollowDistance: 20
@@ -329,25 +327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.CharacterView
   _character: {fileID: 7982669016904728492}
   _renderer: {fileID: 3690388927671851586}
---- !u!114 &3023070504980559693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266341132521332984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 712c8d6be05f004468f55ff2c09f2ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Wanderer
-  _character: {fileID: 7982669016904728492}
-  _minChangeInterval: 0.5
-  _maxChangeInterval: 6
-  _minDriftSpeed: 1
-  _maxDriftSpeed: 20
-  _minSpeed: 1
-  _maxSpeed: 5
 --- !u!114 &1283344826595944523
 MonoBehaviour:
   m_ObjectHideFlags: 0

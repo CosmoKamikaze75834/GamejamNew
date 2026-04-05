@@ -2,41 +2,31 @@ using UnityEngine;
 
 namespace FiXiKTestScripts
 {
-    public class Wanderer : MonoBehaviour
+    public class Wanderer
     {
-        [SerializeField] private Character _character;
-
-        [Header("Interval between direction changes (seconds)")]
-        [SerializeField] private float _minChangeInterval = 1f;
-        [SerializeField] private float _maxChangeInterval = 5f;
-
-        [Header("Real-time direction drift (degrees per second)")]
-        [SerializeField] private float _minDriftSpeed = 10f;
-        [SerializeField] private float _maxDriftSpeed = 60f;
-
-        [Header("Movement speed range")]
-        [SerializeField] private float _minSpeed = 2f;
-        [SerializeField] private float _maxSpeed = 7f;
+        private readonly Character _character;
+        private readonly Transform _transform;
 
         private Vector2 _desiredDirection;
         private float _timeUntilNextChange;
 
-        private WandererStats _stats;
+        private readonly WandererStats _stats;
 
-        private void Awake()
+        public Wanderer(Character character, WandererStats stats)
         {
+            _character = character;
+            _transform = character.transform;
+            _stats = stats;
+
             SetRandomDirection();
             ScheduleNextChange();
             SetRandomSpeed();
         }
-
-        public void SetStats(WandererStats stats) =>
-            _stats = stats;
-
+            
         public void UpdateWander(float deltaTime)
         {
             DriftDesiredDirection(deltaTime);
-            _character.Move(transform.right);
+            _character.Move(_transform.right);
             _character.Rotate(_desiredDirection, deltaTime);
 
             _timeUntilNextChange -= deltaTime;
@@ -57,17 +47,17 @@ namespace FiXiKTestScripts
         }
 
         private void ScheduleNextChange() =>
-            _timeUntilNextChange = UnityEngine.Random.Range(_minChangeInterval, _maxChangeInterval);
+            _timeUntilNextChange = UnityEngine.Random.Range(_stats.MinChangeInterval, _stats.MaxChangeInterval);
 
         private void SetRandomSpeed()
         {
-            float randomSpeed = UnityEngine.Random.Range(_minSpeed, _maxSpeed);
+            float randomSpeed = UnityEngine.Random.Range(_stats.MinSpeed, _stats.MaxSpeed);
             _character.SetSpeed(randomSpeed);
         }
 
         private void DriftDesiredDirection(float deltaTime)
         {
-            float driftSpeed = UnityEngine.Random.Range(_minDriftSpeed, _maxDriftSpeed);
+            float driftSpeed = UnityEngine.Random.Range(_stats.MinDriftSpeed, _stats.MaxDriftSpeed);
             float sign = UnityEngine.Random.value > 0.5f ? 1f : -1f;
             float angleDelta = driftSpeed * sign * deltaTime;
 
@@ -75,15 +65,6 @@ namespace FiXiKTestScripts
             float newAngle = currentAngle + angleDelta;
             float rad = newAngle * Mathf.Deg2Rad;
             _desiredDirection = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            if (_character == null)
-                return;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, _desiredDirection);
         }
     }
 }

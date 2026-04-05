@@ -8,18 +8,19 @@ namespace FiXiKTestScripts
     public class Enemy : MonoBehaviour, IAttacker, IEntity
     {
         [SerializeField] private Character _character;
-        [SerializeField] private Wanderer _wanderer;
         [SerializeField] private LayerMask _targetLayers;
 
         private readonly List<IEntity> _cachedTargets = new();
         private readonly List<IAttacker> _cachedAttackers = new();
         private readonly List<Npc> _recruits = new();
+
         private EnemyStats _stats;
-        private float _originalSpeed;
+        private Wanderer _wanderer;
         private Shooter _shooter;
         private IEntity _currentTarget;
-        private float _lastScanTime;
         private IAttacker _threatToFlee;
+        private float _originalSpeed;
+        private float _lastScanTime;
         private int _recruitsCount;
 
         public event Action CountChanged;
@@ -32,8 +33,11 @@ namespace FiXiKTestScripts
 
         public LangData TeamName { get; private set; }
 
-        private void Awake() =>
+        public void Init(WandererStats stats)
+        {
             Transform = transform;
+            _wanderer = new(_character, stats);
+        }
 
         private void Start() =>
             _originalSpeed = _character.Speed;

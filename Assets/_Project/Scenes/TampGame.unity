@@ -154,7 +154,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &213969770
 MonoBehaviour:
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.NpcFactory
   _prefab: {fileID: 8833241806232385252, guid: 2f2195b2769a7ec47ab3f92624b06a05, type: 3}
+  _wandererStatsConfig: {fileID: 11400000, guid: 04b370e1df90d2b4cbdfba077252c29f, type: 2}
   _centerDeviation: 24
 --- !u!4 &213969771
 Transform:
@@ -977,7 +978,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &429451937
 Transform:
@@ -1131,7 +1132,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &471580311
 Transform:
@@ -1162,6 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.EnemyFactory
   _prefab: {fileID: 5532276765085733290, guid: 7547f2ddfcc6aab4cb9adb164acf2046, type: 3}
   _enemyStatsConfig: {fileID: 11400000, guid: a4a431c444131764ca9999c5042941e5, type: 2}
+  _wandererStatsConfig: {fileID: 11400000, guid: 384b3b3e1e592504aa4a93b8b99dec9f, type: 2}
   _centerDeviation: 24
 --- !u!4 &521618958 stripped
 Transform:
@@ -2228,7 +2230,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1115558216
 MonoBehaviour:

@@ -8,6 +8,7 @@ namespace FiXiKTestScripts
     {
         [SerializeField] private Enemy _prefab;
         [SerializeField] private EnemyStatsConfig _enemyStatsConfig;
+        [SerializeField] private WandererStatsConfig _wandererStatsConfig;
         [SerializeField] private float _centerDeviation = 24;
 
         private ShooterFactory _shooterFactory;
@@ -40,15 +41,14 @@ namespace FiXiKTestScripts
                 Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Enemy enemy = Instantiate(_prefab, position, rotation);
+                enemy.Init(_wandererStatsConfig.WandererStats);
                 enemy.SetStats(stats);
+                enemy.SetColor(_colorFactory.Give());
+                enemy.SetSpeed(stats.MovementSpeed);
+
                 Shooter shooter = _shooterFactory.Get(enemy);
                 shooter.SetReloadTime(stats.ReloadTime);
                 enemy.SetShooter(shooter);
-
-                Character character = enemy.GetComponent<Character>();
-
-                character.SetColor(_colorFactory.Give());
-                character.SetSpeed(stats.MovementSpeed);
 
                 ConspiracyTheory theory = _conspiracyTheoryFactory.Get(enemy.transform);
                 enemy.SetTeamName(theory.LangData);

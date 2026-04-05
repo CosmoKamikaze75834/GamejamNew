@@ -6,6 +6,7 @@ namespace FiXiKTestScripts
     public class NpcFactory : MonoBehaviour
     {
         [SerializeField] private Npc _prefab;
+        [SerializeField] private WandererStatsConfig _wandererStatsConfig;   
         [SerializeField] private float _centerDeviation = 24;
 
         public event Action<Npc> NpcCreated;
@@ -22,7 +23,8 @@ namespace FiXiKTestScripts
                 Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Npc npc = Instantiate(_prefab, position, rotation);
-                npc.GetComponent<Character>().SetColor(color);
+                npc.Init(_wandererStatsConfig.WandererStats);
+                npc.SetColor(color);
                 NpcCreated?.Invoke(npc);
             }
         }
