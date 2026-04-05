@@ -7,6 +7,8 @@ namespace FiXiKTestScripts
         [SerializeField] private Character _character;
         [SerializeField] private SpriteRenderer _renderer;
 
+        public Color Color => _renderer.color;
+
         private void OnEnable() =>
             _character.ColorChanged += OnColorChanged;
 
