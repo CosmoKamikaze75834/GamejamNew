@@ -19,12 +19,14 @@ namespace FiXiKTestScripts
             _colors = new(_colorSet.Colors);
 
             Shooter shooter = new(_player, _bulletPrefab);
-            _player.SetShooter(shooter);
-            _player.GetComponent<Character>().SetColor(GiveColor());
+            _player.SetShooter(shooter);            
 
             ConspiracyTheory conspiracyTheory = Instantiate(_conspiracyTheoryPrefab, _player.transform.position, Quaternion.identity);
             conspiracyTheory.SetText(GiveTheory()).SetTarget(_player.transform);
         }
+
+        private void Start() =>
+            _player.GetComponent<Character>().SetColor(GiveColor());
 
         public Color GiveColor()
         {
