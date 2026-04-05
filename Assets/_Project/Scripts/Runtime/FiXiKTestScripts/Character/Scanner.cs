@@ -3,14 +3,12 @@ using UnityEngine;
 
 namespace FiXiKTestScripts
 {
-    public class Scanner : MonoBehaviour
+    public static class Scanner
     {
-        [SerializeField] private LayerMask _targetLayers;
-
-        public List<IEntity> Scan(Vector2 position, float radius)
+        public static List<IEntity> Scan(Vector2 position, float radius, LayerMask targetLayers)
         {
             List<IEntity> found = new();
-            Collider2D[] hits = Physics2D.OverlapCircleAll(position, radius, _targetLayers);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(position, radius, targetLayers);
 
             foreach (Collider2D hit in hits)
             {

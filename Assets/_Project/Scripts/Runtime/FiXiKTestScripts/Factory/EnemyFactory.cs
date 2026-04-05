@@ -7,9 +7,8 @@ namespace FiXiKTestScripts
     public class EnemyFactory : MonoBehaviour
     {
         [SerializeField] private Enemy _prefab;
-        [SerializeField] private float _reloadTime = 2;
+        [SerializeField] private EnemyStatsConfig _enemyStatsConfig;
         [SerializeField] private float _centerDeviation = 24;
-        [SerializeField] private float _movementSpeed = 4;
 
         private ShooterFactory _shooterFactory;
         private ConspiracyTheoryFactory _conspiracyTheoryFactory;
@@ -35,18 +34,21 @@ namespace FiXiKTestScripts
         {
             for (int i = 0; i < count; i++)
             {
+                EnemyStats stats = _enemyStatsConfig.Stats;
+
                 Vector3 position = new(GetRandom, GetRandom, 0);
                 Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Enemy enemy = Instantiate(_prefab, position, rotation);
+                enemy.SetStats(stats);
                 Shooter shooter = _shooterFactory.Get(enemy);
-                shooter.SetReloadTime(_reloadTime);
+                shooter.SetReloadTime(stats.ReloadTime);
                 enemy.SetShooter(shooter);
 
                 Character character = enemy.GetComponent<Character>();
 
                 character.SetColor(_colorFactory.Give());
-                character.SetSpeed(_movementSpeed);
+                character.SetSpeed(stats.MovementSpeed);
 
                 ConspiracyTheory theory = _conspiracyTheoryFactory.Get(enemy.transform);
                 enemy.SetTeamName(theory.LangData);

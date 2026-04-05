@@ -199,7 +199,6 @@ GameObject:
   - component: {fileID: 1537221835829993825}
   - component: {fileID: 3023070504980559693}
   - component: {fileID: 1283344826595944523}
-  - component: {fileID: 708042234260356226}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -361,23 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45ea0a42e636c546b66a23743690549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.FleeBehavior
-  _scanner: {fileID: 708042234260356226}
   _character: {fileID: 7982669016904728492}
-  _detectionRadius: 6
-  _fleeSpeedMultiplier: 1.5
-  _scanInterval: 0.3
---- !u!114 &708042234260356226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266341132521332984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d595d5cad15d16f438ee616f1096de4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Scanner
   _targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  _detectionRadius: 6
+  _fleeSpeedMultiplier: 1.5
+  _scanInterval: 0.3

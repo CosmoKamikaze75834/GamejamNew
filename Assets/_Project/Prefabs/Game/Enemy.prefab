@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 2866504480416988669}
   - component: {fileID: 8558327359494640585}
   - component: {fileID: 7977944908197262157}
-  - component: {fileID: 3568457631160774019}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -207,10 +206,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Enemy
   _character: {fileID: 2866504480416988669}
   _wanderer: {fileID: 7977944908197262157}
-  _scanner: {fileID: 3568457631160774019}
-  _visibleDistance: 10
-  _attackDistance: 5
-  _scanInterval: 0.5
+  _targetLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &2866504480416988669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,21 +255,6 @@ MonoBehaviour:
   _maxDriftSpeed: 10
   _minSpeed: 2
   _maxSpeed: 7
---- !u!114 &3568457631160774019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413516547418456214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d595d5cad15d16f438ee616f1096de4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Scanner
-  _targetLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &5198572457006221332
 GameObject:
   m_ObjectHideFlags: 0

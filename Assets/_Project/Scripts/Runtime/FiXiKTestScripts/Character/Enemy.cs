@@ -9,15 +9,12 @@ namespace FiXiKTestScripts
     {
         [SerializeField] private Character _character;
         [SerializeField] private Wanderer _wanderer;
-        [SerializeField] private Scanner _scanner;
-        [SerializeField] private float _visibleDistance = 10f;
-        [SerializeField] private float _attackDistance = 5f;
-        [SerializeField] private float _scanInterval = 0.5f;
-        [SerializeField] private float _fleeSpeedMultiplier = 1.5f;
+        [SerializeField] private LayerMask _targetLayers;
 
         private readonly List<IEntity> _cachedTargets = new();
         private readonly List<IAttacker> _cachedAttackers = new();
         private readonly List<Npc> _recruits = new();
+        private EnemyStats _stats;
         private float _originalSpeed;
         private Shooter _shooter;
         private IEntity _currentTarget;
@@ -45,7 +42,7 @@ namespace FiXiKTestScripts
         {
             float deltaTime = Time.deltaTime;
 
-            if (Time.time >= _lastScanTime + _scanInterval)
+            if (Time.time >= _lastScanTime + _stats.ScanInterval)
             {
                 PerformFilteredScan();
                 EvaluateThreat();
@@ -58,11 +55,11 @@ namespace FiXiKTestScripts
                 Vector2 away = ((Vector2)Transform.position - threatPos).normalized;
                 _character.Move(away);
                 _character.Rotate(away, deltaTime);
-                _character.SetSpeed(_originalSpeed * _fleeSpeedMultiplier);
+                _character.SetSpeed(_originalSpeed * _stats.FleeSpeedMultiplier);
 
                 IEntity shootTarget = GetNearestEnemyNpcFromCache();
 
-                if (shootTarget != null && Vector2.Distance(Transform.position, shootTarget.Transform.position) <= _attackDistance)
+                if (shootTarget != null && Vector2.Distance(Transform.position, shootTarget.Transform.position) <= _stats.AttackDistance)
                 {
                     Vector2 shootDir = ((Vector2)shootTarget.Transform.position - (Vector2)Transform.position).normalized;
                     _character.Rotate(shootDir, deltaTime);
@@ -82,7 +79,7 @@ namespace FiXiKTestScripts
                     _character.RotateTo(targetPos, deltaTime);
                     _character.MoveTo(targetPos, deltaTime);
 
-                    if (distanceToTarget <= _attackDistance)
+                    if (distanceToTarget <= _stats.AttackDistance)
                     {
                         Vector2 direction = (targetPos - (Vector2)Transform.position).normalized;
                         _shooter?.TryShoot(Transform.position, direction);
@@ -95,12 +92,21 @@ namespace FiXiKTestScripts
             }
         }
 
+        public void SetStats(EnemyStats stats) =>
+            _stats = stats;
+
+        public void SetColor(Color color) =>
+            _character.SetColor(color);
+
+        public void SetSpeed(float speed) =>
+            _character.SetSpeed(speed);
+
         public void SetTeamName(LangData langData) =>
             TeamName = langData;
 
         private void PerformFilteredScan()
         {
-            List<IEntity> allTargets = _scanner.Scan(Transform.position, _visibleDistance);
+            List<IEntity> allTargets = Scanner.Scan(Transform.position, _stats.VisibleDistance, _targetLayers);
 
             _cachedTargets.Clear();
             _cachedAttackers.Clear();
@@ -186,7 +192,7 @@ namespace FiXiKTestScripts
                     continue;
 
                 float dist = Vector2.Distance(myPos, target.Transform.position);
-                if (dist < minDist && dist <= _visibleDistance)
+                if (dist < minDist && dist <= _stats.VisibleDistance)
                 {
                     minDist = dist;
                     nearest = target;
@@ -219,10 +225,13 @@ namespace FiXiKTestScripts
 
         private void OnDrawGizmosSelected()
         {
+            if (_stats == null)
+                return;
+
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, _visibleDistance);
+            Gizmos.DrawWireSphere(transform.position, _stats.VisibleDistance);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _attackDistance);
+            Gizmos.DrawWireSphere(transform.position, _stats.AttackDistance);
         }
     }
 }

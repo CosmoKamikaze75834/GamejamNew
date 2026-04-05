@@ -5,8 +5,8 @@ namespace FiXiKTestScripts
 {
     public class FleeBehavior : MonoBehaviour
     {
-        [SerializeField] private Scanner _scanner;
         [SerializeField] private Character _character;
+        [SerializeField] private LayerMask _targetLayers;
         [SerializeField] private float _detectionRadius = 8f;
         [SerializeField] private float _fleeSpeedMultiplier = 1.5f;
         [SerializeField] private float _scanInterval = 0.3f;
@@ -20,8 +20,6 @@ namespace FiXiKTestScripts
         {
             if (_character == null)
                 _character = GetComponent<Character>();
-            if (_scanner == null)
-                _scanner = GetComponent<Scanner>();
 
             if (_character != null)
                 _originalSpeed = _character.Speed;
@@ -33,7 +31,7 @@ namespace FiXiKTestScripts
         {
             fleeDirection = Vector2.zero;
 
-            if (_character == null || _scanner == null)
+            if (_character == null)
                 return false;
 
             if (Time.time >= _lastScanTime + _scanInterval)
@@ -59,7 +57,7 @@ namespace FiXiKTestScripts
 
         private void ScanForThreats()
         {
-            var allEntities = _scanner.Scan(transform.position, _detectionRadius);
+            var allEntities = Scanner.Scan(transform.position, _detectionRadius, _targetLayers);
             var threats = allEntities
                 .Where(e => e is IAttacker attacker && attacker != _owner)
                 .Select(e => e as IAttacker)

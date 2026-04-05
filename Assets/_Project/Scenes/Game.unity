@@ -828,9 +828,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.EnemyFactory
   _prefab: {fileID: 5532276765085733290, guid: 7547f2ddfcc6aab4cb9adb164acf2046, type: 3}
-  _reloadTime: 2
+  _enemyStatsConfig: {fileID: 11400000, guid: a4a431c444131764ca9999c5042941e5, type: 2}
   _centerDeviation: 24
-  _movementSpeed: 4
 --- !u!1 &530578625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,34 +2973,6 @@ PrefabInstance:
     - target: {fileID: 8518307607118120015, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
       propertyPath: m_Name
       value: AnticlickerMediator
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 960
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 340
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9202232680371946184, guid: a588714530d7d074ba6ed6b5faf0e00c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
