@@ -9,6 +9,10 @@ namespace FiXiKTestScripts
         [SerializeField] private Wanderer _wanderer;
         [SerializeField] private FleeBehavior _fleeBehavior;
 
+        [Header("Following Settings")]
+        [SerializeField] private float _maxFollowSpeed = 60f;
+        [SerializeField] private float _maxFollowDistance = 10f;
+
         public IAttacker Owner { get; private set; }
 
         public Transform Transform { get; private set; }
@@ -32,8 +36,15 @@ namespace FiXiKTestScripts
 
             if (Owner != null)
             {
-                _character.RotateTo(Owner.Transform.position, deltaTime);
-                _character.MoveTo(Owner.Transform.position, deltaTime * 6);
+                Vector2 ownerPos = Owner.Transform.position;
+                float distance = Vector2.Distance(Transform.position, ownerPos);
+
+                float t = Mathf.Clamp01(distance / _maxFollowDistance);
+                float currentSpeed = Mathf.Lerp(0f, _maxFollowSpeed, t);
+                _character.SetSpeed(currentSpeed);
+
+                _character.RotateTo(ownerPos, deltaTime);
+                _character.MoveTo(ownerPos, deltaTime);
 
                 if (_fleeBehavior != null)
                     _fleeBehavior.ResetSpeed();

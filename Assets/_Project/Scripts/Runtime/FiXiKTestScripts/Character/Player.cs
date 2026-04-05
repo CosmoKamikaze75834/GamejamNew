@@ -42,17 +42,14 @@ namespace FiXiKTestScripts
         private void Awake() =>
             Transform = transform;
 
-        private void Update()
+        private void FixedUpdate()
         {
             Vector3 playerScreenPos = _camera.WorldToScreenPoint(_character.transform.position);
             Vector2 mouseScreenPos = _inputReader.PointPosition;
             Vector2 direction = mouseScreenPos - (Vector2)playerScreenPos;
 
             _character.Rotate(direction, Time.deltaTime);
-        }
 
-        private void FixedUpdate()
-        {
             if (_followTarget.HasValue)
                 _character.MoveTo(_followTarget.Value, Time.fixedDeltaTime);
             else

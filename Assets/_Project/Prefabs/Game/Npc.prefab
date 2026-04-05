@@ -314,6 +314,8 @@ MonoBehaviour:
   _character: {fileID: 7982669016904728492}
   _wanderer: {fileID: 3023070504980559693}
   _fleeBehavior: {fileID: 1283344826595944523}
+  _maxFollowSpeed: 70
+  _maxFollowDistance: 20
 --- !u!114 &1537221835829993825
 MonoBehaviour:
   m_ObjectHideFlags: 0
