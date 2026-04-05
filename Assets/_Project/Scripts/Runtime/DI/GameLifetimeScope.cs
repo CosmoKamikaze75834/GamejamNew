@@ -41,7 +41,7 @@ public class GameLifetimeScope : LifetimeScope
         _builder.Register<LanguageSwitcher>(Lifetime.Singleton);
 
     private void BindDifficultySwitcher() =>
-        _builder.Register<DifficultyType>(Lifetime.Singleton);
+        _builder.Register<DifficultySwitcher>(Lifetime.Singleton);
 
     private void BindSaver()
     {
