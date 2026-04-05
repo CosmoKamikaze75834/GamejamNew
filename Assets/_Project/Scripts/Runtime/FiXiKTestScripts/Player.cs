@@ -73,11 +73,7 @@ namespace FiXiKTestScripts
         private void OnDestinationReached() =>
             _followTarget = null;
 
-        private void OnShootPressed()
-        {
-            Vector2 worldMouse = CalculateDirection();
-            Vector2 direction = worldMouse - (Vector2)transform.position;
-            _shooter.TryShoot(transform.position, direction);
-        }
+        private void OnShootPressed() =>
+            _shooter.TryShoot(transform.position, transform.right);
     }
 }
