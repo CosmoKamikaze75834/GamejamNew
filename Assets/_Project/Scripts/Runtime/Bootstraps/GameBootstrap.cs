@@ -6,6 +6,7 @@ using VContainer;
 
 public class GameBootstrap : BootstrapBase
 {
+    [SerializeField] private GameStats _gameStats;
     [SerializeField] private PopUp _menuButtons;
     [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private List<PopUp> _popUpList;
@@ -57,6 +58,8 @@ public class GameBootstrap : BootstrapBase
         _enemyFactory.Spawn(_enemyCount);
         _npcFactory.Spawn(_npcCount);
         _cinemachineCamera.Follow = player.transform;
+
+        _gameStats.CreateLines(_enemyCount);
     }
 
     private void OnDestroy()
