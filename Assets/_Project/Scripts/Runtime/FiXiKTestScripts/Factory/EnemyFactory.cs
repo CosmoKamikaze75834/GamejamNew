@@ -48,7 +48,8 @@ namespace FiXiKTestScripts
                 character.SetColor(_colorFactory.Give());
                 character.SetSpeed(_movementSpeed);
 
-                _conspiracyTheoryFactory.Get(enemy.transform);
+                ConspiracyTheory theory = _conspiracyTheoryFactory.Get(enemy.transform);
+                enemy.SetTeamName(theory.LangData);
 
                 EnemyCreated?.Invoke(enemy);
             }

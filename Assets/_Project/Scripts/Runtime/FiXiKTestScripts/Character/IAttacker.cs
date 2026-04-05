@@ -1,17 +1,22 @@
+using System;
 using UnityEngine;
 
 namespace FiXiKTestScripts
 {
     public interface IAttacker
     {
-        Color Color { get; }
+        public event Action CountChanged;
 
-        Transform Transform { get; }
+        public Color Color { get; }
 
-        int RecruitsCount { get; }
+        public Transform Transform { get; }
 
-        void AddRecruit(Npc npc);
+        public int RecruitsCount { get; }
 
-        void RemoveRecruit(Npc npc);
+        public LangData TeamName { get; }
+
+        public void AddRecruit(Npc npc);
+
+        public void RemoveRecruit(Npc npc);
     }
 }

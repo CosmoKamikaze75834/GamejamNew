@@ -7,6 +7,14 @@ public class LangData
     [SerializeField][TextArea] private string _ru = "текст";
     [SerializeField][TextArea] private string _en = "text";
 
+    public LangData() { }
+
+    public LangData(string ru, string en)
+    {
+        _ru = ru;
+        _en = en;
+    }
+
     public string Get(LangType lang)
     {
         return lang switch

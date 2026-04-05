@@ -2039,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.GameStats
   _lineStatsFactory: {fileID: 460540047}
+  _maximumLines: 5
 --- !u!114 &1332249415
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
@@ -17,11 +18,15 @@ namespace FiXiKTestScripts
 
         private Vector2? _followTarget;
 
+        public event Action CountChanged;
+
         public Color Color => _character.Color;
 
         public int RecruitsCount => _recruitsCount;
 
         public Transform Transform { get; private set; }
+
+        public LangData TeamName { get; private set; }
 
         [Inject]
         public void Construct(IInputReader inputReader)
@@ -64,19 +69,26 @@ namespace FiXiKTestScripts
         public void SetShooter(Shooter shooter) =>
             _shooter = shooter;
 
+        public void SetTeamName(LangData langData) =>
+            TeamName = langData;
+
         public void AddRecruit(Npc npc)
         {
             if (!_recruits.Contains(npc))
             {
                 _recruits.Add(npc);
                 _recruitsCount++;
+                CountChanged?.Invoke();
             }
         }
 
         public void RemoveRecruit(Npc npc)
         {
             if (_recruits.Remove(npc))
+            {
                 _recruitsCount--;
+                CountChanged?.Invoke();
+            }
         }
 
         private Vector2 CalculateDirection()

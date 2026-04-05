@@ -8,8 +8,11 @@ namespace FiXiKTestScripts
 
         private Transform _target;
 
+        public LangData LangData { get; private set; }
+
         public ConspiracyTheory SetText(LangData data)
         {
+            LangData = data;
             _text.SetData(data);
 
             return this;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VContainer;
 
@@ -7,6 +8,7 @@ namespace FiXiKTestScripts
     public class GameStats : MonoBehaviour
     {
         [SerializeField] private LineStatsFactory _lineStatsFactory;
+        [SerializeField] private int _maximumLines = 5;
 
         private List<LineStatsView> _lines;
         private AttackerRegistry _attackerRegistry;
@@ -21,26 +23,46 @@ namespace FiXiKTestScripts
 
         public void CreateLines()
         {
-            _lines = _lineStatsFactory.Get(_attackerRegistry.Count);
+            _lines = _lineStatsFactory.Get(_maximumLines);
             UpdateLines();
+
+            foreach (IAttacker attacker in _attackerRegistry.Attackers)
+                attacker.CountChanged += OnCountChanged;
         }
 
         private void UpdateLines()
         {
             int npcTotalCount = _npcRegistry.Count;
 
+            List<IAttacker> sortedAttackers = _attackerRegistry.Attackers
+                .OrderByDescending(a => a.RecruitsCount)
+                .ToList();
+
             for (int i = 0; i < _lines.Count; i++)
-                UpdateLine(i, _lines[i], _attackerRegistry.Attackers[i], npcTotalCount);
+            {
+                if (i < sortedAttackers.Count)
+                {
+                    _lines[i].gameObject.SetActive(true);
+                    UpdateLine(i + 1, _lines[i], sortedAttackers[i], npcTotalCount);
+                }
+                else
+                {
+                    _lines[i].gameObject.SetActive(false);
+                }
+            }
         }
 
         private void UpdateLine(int index, LineStatsView line, IAttacker attacker, int npcTotalCount)
         {
             line.UpdateStats(
                 index,
-                "Название теории заговора",
+                attacker.TeamName,
                 attacker.RecruitsCount,
                 npcTotalCount,
                 attacker.Color);
         }
+
+        private void OnCountChanged() =>
+            UpdateLines();
     }
 }

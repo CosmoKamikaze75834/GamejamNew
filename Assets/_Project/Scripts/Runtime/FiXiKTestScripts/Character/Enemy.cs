@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,11 +25,15 @@ namespace FiXiKTestScripts
         private IAttacker _threatToFlee;
         private int _recruitsCount;
 
+        public event Action CountChanged;
+
         public Color Color => _character.Color;
 
         public Transform Transform { get; private set; }
 
         public int RecruitsCount => _recruitsCount;
+
+        public LangData TeamName { get; private set; }
 
         private void Awake() =>
             Transform = transform;
@@ -90,6 +95,9 @@ namespace FiXiKTestScripts
             }
         }
 
+        public void SetTeamName(LangData langData) =>
+            TeamName = langData;
+
         private void PerformFilteredScan()
         {
             List<IEntity> allTargets = _scanner.Scan(Transform.position, _visibleDistance);
@@ -99,31 +107,25 @@ namespace FiXiKTestScripts
 
             foreach (var entity in allTargets)
             {
-                // пропускаем себя
                 if (entity == (IEntity)this)
                     continue;
 
-                // если это IAttacker (другой враг или игрок) – добавляем в _cachedAttackers
                 if (entity is IAttacker attacker && attacker != (IAttacker)this)
                 {
                     _cachedAttackers.Add(attacker);
+
                     continue;
                 }
 
-                // если это NPC, которого не владеем – добавляем в _cachedTargets для атаки
                 if (entity is Npc npc && npc.Owner != (IAttacker)this)
-                {
                     _cachedTargets.Add(npc);
-                }
             }
         }
 
-        // CHANGE: оценка угрозы теперь только по _cachedAttackers, без FindObjectsOfType
         private void EvaluateThreat()
         {
             _threatToFlee = null;
 
-            // отбираем тех, у кого армия больше или равна (сильный противник)
             var threats = _cachedAttackers
                 .Where(a => a.RecruitsCount >= RecruitsCount)
                 .ToList();
@@ -131,14 +133,16 @@ namespace FiXiKTestScripts
             if (threats.Count == 0)
                 return;
 
-            // из них выбираем ближайшего
             float minDist = float.MaxValue;
             Vector2 myPos = Transform.position;
 
             foreach (var threat in threats)
             {
-                if (threat.Transform == null) continue;
+                if (threat.Transform == null) 
+                    continue;
+
                 float dist = Vector2.Distance(myPos, threat.Transform.position);
+
                 if (dist < minDist)
                 {
                     minDist = dist;
@@ -196,17 +200,21 @@ namespace FiXiKTestScripts
 
         public void AddRecruit(Npc npc)
         {
-            if (!_recruits.Contains(npc))
+            if (_recruits.Contains(npc) == false)
             {
                 _recruits.Add(npc);
                 _recruitsCount++;
+                CountChanged?.Invoke();
             }
         }
 
         public void RemoveRecruit(Npc npc)
         {
             if (_recruits.Remove(npc))
+            {
                 _recruitsCount--;
+                CountChanged?.Invoke();
+            }
         }
 
         private void OnDrawGizmosSelected()

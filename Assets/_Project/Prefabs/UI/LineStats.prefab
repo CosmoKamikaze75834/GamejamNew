@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 6592262376386355457}
   - component: {fileID: 6815232744504186434}
   - component: {fileID: 3878071540821947478}
+  - component: {fileID: 1995188699413013563}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -275,6 +276,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1995188699413013563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029175341911986370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd328e62ab73410468fcc19d52e309a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextLanguage
+  _langs:
+    _ru: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0442\u0435\u043E\u0440\u0438\u0438
+      \u0437\u0430\u0433\u043E\u0432\u043E\u0440\u0430"
+    _en: The name of the conspiracy theory
 --- !u!1 &3574902540934580732
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.LineStatsView
   _number: {fileID: 2940110897909392120}
-  _name: {fileID: 3878071540821947478}
   _count: {fileID: 7644081617100947425}
+  _teamName: {fileID: 1995188699413013563}
   _fillImage: {fileID: 4419425013194926877}
   _lenghtName: 25
 --- !u!1 &6754289788067170387

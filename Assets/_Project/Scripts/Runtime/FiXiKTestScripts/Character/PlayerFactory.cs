@@ -35,7 +35,9 @@ namespace FiXiKTestScripts
             Player player = _resolver.Instantiate(_prefab, position, rotation);
             player.SetShooter(_shooterFactory.Get(player));
             player.GetComponent<Character>().SetColor(_colorFactory.Give());
-            _conspiracyTheoryFactory.Get(player.transform);
+            ConspiracyTheory theory = _conspiracyTheoryFactory.Get(player.transform);
+            player.SetTeamName(theory.LangData);
+
             PlayerCreated?.Invoke(player);
 
             return player;
