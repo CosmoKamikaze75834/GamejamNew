@@ -1,3 +1,4 @@
+using System;
 using FiXiKTestScripts;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -36,6 +37,8 @@ public class GameScope : LifetimeScope
         BindEnemyFactory();
         BindNpcFactory();
         BindCinemachineCamera();
+        BindAttackerRegistry();
+        BindNpcRegistry();
     }
 
     private void BindPauseSwitcher() =>
@@ -73,4 +76,10 @@ public class GameScope : LifetimeScope
 
     private void BindCinemachineCamera() =>
         _builder.RegisterComponent(_cinemachineCamera);
+
+    private void BindAttackerRegistry() =>
+        _builder.Register<AttackerRegistry>(Lifetime.Singleton);
+
+    private void BindNpcRegistry() =>
+        _builder.Register<NpcRegistry>(Lifetime.Singleton);
 }

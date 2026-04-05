@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using VContainer;
 
@@ -14,7 +15,9 @@ namespace FiXiKTestScripts
         private ConspiracyTheoryFactory _conspiracyTheoryFactory;
         private ColorFactory _colorFactory;
 
-        private float GetRandom => Random.Range(-_centerDeviation, _centerDeviation);
+        public event Action<Enemy> EnemyCreated;
+
+        private float GetRandom => UnityEngine.Random.Range(-_centerDeviation, _centerDeviation);
 
         [Inject]
         public void Construct(
@@ -33,7 +36,7 @@ namespace FiXiKTestScripts
             for (int i = 0; i < count; i++)
             {
                 Vector3 position = new(GetRandom, GetRandom, 0);
-                Quaternion rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+                Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Enemy enemy = Instantiate(_prefab, position, rotation);
                 Shooter shooter = _shooterFactory.Get(enemy);
@@ -46,6 +49,8 @@ namespace FiXiKTestScripts
                 character.SetSpeed(_movementSpeed);
 
                 _conspiracyTheoryFactory.Get(enemy.transform);
+
+                EnemyCreated?.Invoke(enemy);
             }
         }
     }

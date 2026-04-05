@@ -896,6 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0bf87cb98ac0447ae26e84d2acc0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
+  _gameStats: {fileID: 1332249414}
   _menuButtons: {fileID: 827742382}
   _playerStartPosition: {fileID: 1363262235}
   _popUpList:
@@ -1788,6 +1789,7 @@ MonoBehaviour:
   - {fileID: 827742376}
   - {fileID: 1418002956}
   - {fileID: 68176}
+  - {fileID: 1332249413}
   _bulletPrefab: {fileID: 2208295246528434938, guid: 95ad22a6fee710f45b3204dda9fce02d, type: 3}
   _conspiracyTheoryPrefab: {fileID: -440763190564719951, guid: 353b29fbacea8b743a4764abfcffa631, type: 3}
   _conspiracyTheoryConfig: {fileID: 11400000, guid: 57ca99e47d04b3c4f90ac51ab2a34f47, type: 2}

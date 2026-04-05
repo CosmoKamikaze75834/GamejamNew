@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FiXiKTestScripts
@@ -7,7 +8,9 @@ namespace FiXiKTestScripts
         [SerializeField] private Npc _prefab;
         [SerializeField] private float _centerDeviation = 24;
 
-        private float GetRandom => Random.Range(-_centerDeviation, _centerDeviation);
+        public event Action<Npc> NpcCreated;
+
+        private float GetRandom => UnityEngine.Random.Range(-_centerDeviation, _centerDeviation);
 
         public void Spawn(int count)
         {
@@ -16,10 +19,11 @@ namespace FiXiKTestScripts
             for (int i = 0; i < count; i++)
             {
                 Vector3 position = new(GetRandom, GetRandom, 0);
-                Quaternion rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+                Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Npc npc = Instantiate(_prefab, position, rotation);
                 npc.GetComponent<Character>().SetColor(color);
+                NpcCreated?.Invoke(npc);
             }
         }
     }

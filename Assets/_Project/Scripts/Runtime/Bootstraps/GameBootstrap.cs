@@ -59,7 +59,7 @@ public class GameBootstrap : BootstrapBase
         _npcFactory.Spawn(_npcCount);
         _cinemachineCamera.Follow = player.transform;
 
-        _gameStats.CreateLines(_enemyCount);
+        _gameStats.CreateLines();
     }
 
     private void OnDestroy()
