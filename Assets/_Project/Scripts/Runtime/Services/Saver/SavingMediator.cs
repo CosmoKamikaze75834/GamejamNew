@@ -10,12 +10,17 @@ public class SavingMediator : MediatorBase
 
     private ISaver<SavesData> _saver;
     private LanguageSwitcher _languageSwitcher;
+    private DifficultySwitcher _difficultySwitcher;
 
     [Inject]
-    public void Construct(ISaver<SavesData> saver, LanguageSwitcher languageSwitcher)
+    public void Construct(
+        ISaver<SavesData> saver, 
+        LanguageSwitcher languageSwitcher, 
+        DifficultySwitcher difficultySwitcher)
     {
         _saver = saver;
         _languageSwitcher = languageSwitcher;
+        _difficultySwitcher = difficultySwitcher;
     }
 
     public override void Init()
@@ -26,6 +31,7 @@ public class SavingMediator : MediatorBase
         _music.value = data.MusicVolume;
         _sfx.value = data.SfxVolume;
         _languageSwitcher.SetLang(data.Lang);
+        _difficultySwitcher.SetDifficulty(data.Difficulty);
     }
 
     private void OnDisable() =>
@@ -37,7 +43,8 @@ public class SavingMediator : MediatorBase
             _generalSound.value,
             _music.value,
             _sfx.value,
-            LanguageSwitcher.LangType);
+            LanguageSwitcher.Lang,
+            DifficultySwitcher.Difficulty);
 
         _saver.Save(savesData);
     }

@@ -2,15 +2,15 @@ using System;
 
 public class LanguageSwitcher
 {
-    public static LangType LangType { get; private set; }
+    public static LangType Lang { get; private set; }
 
     public static event Action Changed;
 
     public void SetLang(LangType lang)
     {
-        if (Equals(LangType, lang) == false)
+        if (Equals(Lang, lang) == false)
         {
-            LangType = lang;
+            Lang = lang;
             Changed?.Invoke();
         }
     }
@@ -18,7 +18,7 @@ public class LanguageSwitcher
     public void Next()
     {
         Array values = Enum.GetValues(typeof(LangType));
-        int currentIndex = Array.IndexOf(values, LangType);
+        int currentIndex = Array.IndexOf(values, Lang);
         int nextIndex = (currentIndex + 1) % values.Length;
         SetLang((LangType)values.GetValue(nextIndex));
     }
@@ -26,7 +26,7 @@ public class LanguageSwitcher
     public void Previous()
     {
         Array values = Enum.GetValues(typeof(LangType));
-        int currentIndex = Array.IndexOf(values, LangType);
+        int currentIndex = Array.IndexOf(values, Lang);
         int previousIndex = (currentIndex - 1 + values.Length) % values.Length;
         SetLang((LangType)values.GetValue(previousIndex));
     }

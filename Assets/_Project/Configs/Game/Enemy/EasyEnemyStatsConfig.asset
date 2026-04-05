@@ -17,3 +17,8 @@ MonoBehaviour:
     _attackDistance: 5
     _scanInterval: 0.5
     _fleeSpeedMultiplier: 1.5
+    _movementSpeed: 4
+    _reloadTime: 2
+  _difficultyLevel:
+    _ru: "\u041F\u0440\u043E\u0441\u0442\u043E\u0439"
+    _en: Easy

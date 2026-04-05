@@ -6,7 +6,10 @@ namespace FiXiKTestScripts
     public class EnemyStatsConfig : ScriptableObject
     {
         [SerializeField] private EnemyStats _enemyStats;
+        [SerializeField] private LangData _difficultyLevel;
 
         public EnemyStats Stats => _enemyStats;
+
+        public LangData DifficultyLevel => _difficultyLevel;
     }
 }

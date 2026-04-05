@@ -27,5 +27,5 @@ public class TextLanguage : MonoBehaviour
     }
 
     private void OnLangChanged() =>
-        _text.text = _langs.Get(LanguageSwitcher.LangType);
+        _text.text = _langs.Get(LanguageSwitcher.Lang);
 }

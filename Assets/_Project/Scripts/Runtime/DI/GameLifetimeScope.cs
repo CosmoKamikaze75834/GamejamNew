@@ -21,6 +21,7 @@ public class GameLifetimeScope : LifetimeScope
         BindUpdateService();
         BindAudioService();
         BindLanguageSwitcher();
+        BindDifficultySwitcher();
         BindSaver();
     }
 
@@ -38,6 +39,9 @@ public class GameLifetimeScope : LifetimeScope
 
     private void BindLanguageSwitcher() =>
         _builder.Register<LanguageSwitcher>(Lifetime.Singleton);
+
+    private void BindDifficultySwitcher() =>
+        _builder.Register<DifficultyType>(Lifetime.Singleton);
 
     private void BindSaver()
     {
