@@ -6,7 +6,8 @@ namespace FiXiKTestScripts
     [RequireComponent(typeof(Rigidbody2D))]  
     public class Character : MonoBehaviour
     {
-        private Rigidbody2D _rigidbody;
+        [SerializeField] private Rigidbody2D _rigidbody;
+
         private Mover _mover;
         private Rotator _rotator;
         private Color _color;
@@ -16,9 +17,8 @@ namespace FiXiKTestScripts
 
         public Color Color => _color;
 
-        public void Init()
+        private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
             _mover = new Mover(_rigidbody, OnDestinationReached);
             _rotator = new Rotator(transform);
         }

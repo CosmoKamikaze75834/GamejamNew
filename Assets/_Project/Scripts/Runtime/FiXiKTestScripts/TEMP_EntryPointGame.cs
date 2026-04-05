@@ -8,22 +8,27 @@ namespace FiXiKTestScripts
     {
         [SerializeField] private ColorSetConfig _colorSet;
         [SerializeField] private Player _player;
-        [SerializeField] private Enemy _enemy;
         [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] private ConspiracyTheory _conspiracyTheoryPrefab;
+        [SerializeField] private List<string> _conspiracyTheories;
 
         private List<Color> _colors;
 
-        private void Start()
+        private void Awake()
         {
             _colors = new(_colorSet.Colors);
 
             Shooter shooter = new(_player, _bulletPrefab);
+            _player.SetShooter(shooter);            
 
-            _player.Init(shooter);
-            _player.GetComponent<Character>().SetColor(GiveColor());
+            ConspiracyTheory conspiracyTheory = Instantiate(_conspiracyTheoryPrefab, _player.transform.position, Quaternion.identity);
+            conspiracyTheory.SetText(GiveTheory()).SetTarget(_player.transform);
         }
 
-        private Color GiveColor()
+        private void Start() =>
+            _player.GetComponent<Character>().SetColor(GiveColor());
+
+        public Color GiveColor()
         {
             if (_colors.Count == 0)
                 throw new ArgumentNullException("Набор цветов закончился");
@@ -33,6 +38,18 @@ namespace FiXiKTestScripts
             _colors.RemoveAt(index);
 
             return color;
+        }
+
+        public string GiveTheory()
+        {
+            if (_conspiracyTheories.Count == 0)
+                throw new ArgumentNullException("Набор цветов закончился");
+
+            int index = UnityEngine.Random.Range(0, _conspiracyTheories.Count);
+            string text = _conspiracyTheories[index];
+            _conspiracyTheories.RemoveAt(index);
+
+            return text;
         }
     }
 }

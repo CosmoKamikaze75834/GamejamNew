@@ -2,26 +2,18 @@ using UnityEngine;
 
 namespace FiXiKTestScripts
 {
-    [RequireComponent(typeof(Character))]
     public class CharacterView : MonoBehaviour
     {
         [SerializeField] private Character _character;
-        [SerializeField] private Color _color;
+        [SerializeField] private SpriteRenderer _renderer;
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _character.ColorChanged += OnColorChanged;
-            OnColorChanged(_character.Color);
-        }
 
         private void OnDisable() =>
-            _character.ColorChanged += OnColorChanged;
+            _character.ColorChanged -= OnColorChanged;
 
-        private void OnColorChanged(Color color)
-        {
-            _color = color;
-
-            Debug.Log("Задан новый цвет:" + color);
-        }
+        private void OnColorChanged(Color color) =>
+            _renderer.color = color;
     }
 }

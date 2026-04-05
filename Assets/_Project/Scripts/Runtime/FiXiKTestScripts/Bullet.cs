@@ -18,18 +18,38 @@ namespace FiXiKTestScripts
             _rigidbody = GetComponent<Rigidbody2D>();
             _attacker = attaker;
 
-            _rigidbody.linearVelocity = direction.normalized * _speed;
+            Vector2 dir = direction.normalized;
 
+            if (dir == Vector2.zero)
+            {
+                Debug.LogWarning("Bullet: попытка выстрелить с нулевым направлением, пуля уничтожена");
+                Destroy(gameObject);
+
+                return;
+            }
+
+            _rigidbody.linearVelocity = direction.normalized * _speed;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
             Destroy(gameObject, _lifeTime);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (collision.collider.TryGetComponent(out Npc npc))
-                npc.Recruit(_attacker);
+            if (other.TryGetComponent(out IEntity entity))
+            {
+                if (_attacker == entity)
+                    return;
+
+                if (entity is Npc npc)
+                {
+                    if (npc.Owner == _attacker)
+                        return;
+
+                    npc.Recruit(_attacker);
+                }
+            }
 
             Destroy(gameObject);
         }

@@ -4,10 +4,11 @@ using VContainer;
 namespace FiXiKTestScripts
 {
     [RequireComponent(typeof(Character))]
-    public class Player : MonoBehaviour, IAttacker
+    public class Player : MonoBehaviour, IAttacker, IEntity
     {
+        [SerializeField] private Character _character;
+
         private Camera _camera;
-        private Character _character;
         private Shooter _shooter;
         private IInputReader _inputReader;
 
@@ -15,27 +16,21 @@ namespace FiXiKTestScripts
 
         public Color Color => _character.Color;
 
-        public Transform Transform => transform;
-
+        public Transform Transform { get; private set; }
 
         [Inject]
         public void Construct(IInputReader inputReader)
         {
             _inputReader = inputReader;
             _camera = Camera.main;
-        }
-
-        public void Init(Shooter shooter)
-        {
-            _character = GetComponent<Character>();
-            _character.Init();
-
-            _shooter = shooter;
 
             _inputReader.FollowPointPressed += OnFollowPointPressed;
             _inputReader.ShootPressed += OnShootPressed;
             _character.DestinationReached += OnDestinationReached;
         }
+
+        private void Awake() =>
+            Transform = transform;
 
         private void Update()
         {
@@ -61,6 +56,9 @@ namespace FiXiKTestScripts
             _inputReader.ShootPressed -= OnShootPressed;
         }
 
+        public void SetShooter(Shooter shooter) =>
+            _shooter = shooter;
+
         private Vector2 CalculateDirection()
         {
             Vector2 screenPos = _inputReader.PointPosition;
@@ -75,11 +73,7 @@ namespace FiXiKTestScripts
         private void OnDestinationReached() =>
             _followTarget = null;
 
-        private void OnShootPressed()
-        {
-            Vector2 worldMouse = CalculateDirection();
-            Vector2 direction = worldMouse - (Vector2)transform.position;
-            _shooter.TryShoot(transform.position, direction);
-        }
+        private void OnShootPressed() =>
+            _shooter.TryShoot(transform.position, transform.right);
     }
 }

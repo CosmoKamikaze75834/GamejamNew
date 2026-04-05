@@ -9,7 +9,7 @@ namespace FiXiKTestScripts
         private readonly Bullet _bulletPrefab;
 
         private float _lastShootTime = -Mathf.Infinity;
-        private float _reloadTime = 1.5f;
+        private float _reloadTime = 0.5f;
 
         public Shooter(IAttacker attaker, Bullet bulletPrefab)
         {
