@@ -13,7 +13,6 @@ namespace FiXiK_Utilites.QuitPanel
         [SerializeField] private MenuButtonView _buttonView;
         [SerializeField] private ButtonAnimator _animator;
         [SerializeField] private bool _isAnimate = true;
-        [SerializeField] private bool _isVoised = true;
 
         public event Action Clicked;
         public event Action Entered;

@@ -21,9 +21,8 @@ namespace FiXiKTestScripts
                 throw new ArgumentNullException("Набор теорий закончился");
 
             int index = UnityEngine.Random.Range(0, _theories.Count);
-            string text = _theories[index].Get(LangType.Ru);
             ConspiracyTheory theory = UnityEngine.Object.Instantiate(_prefab);
-            theory.SetText(text).SetTarget(target);
+            theory.SetText(_theories[index]).SetTarget(target);
             _theories.RemoveAt(index);
 
             return theory;

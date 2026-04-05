@@ -1,17 +1,16 @@
-using TMPro;
 using UnityEngine;
 
 namespace FiXiKTestScripts
 {
     public class ConspiracyTheory : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _text;
+        [SerializeField] private TextLanguage _text;
 
         private Transform _target;
 
-        public ConspiracyTheory SetText(string text)
+        public ConspiracyTheory SetText(LangData data)
         {
-            _text.text = text;
+            _text.SetData(data);
 
             return this;
         }

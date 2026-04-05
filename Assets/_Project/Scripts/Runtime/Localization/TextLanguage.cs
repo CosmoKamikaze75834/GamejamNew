@@ -20,6 +20,12 @@ public class TextLanguage : MonoBehaviour
     private void OnDisable() =>
         LanguageSwitcher.Changed -= OnLangChanged;
 
+    public void SetData(LangData data)
+    {
+        _langs = data;
+        OnLangChanged();
+    }
+
     private void OnLangChanged() =>
         _text.text = _langs.Get(LanguageSwitcher.LangType);
 }
