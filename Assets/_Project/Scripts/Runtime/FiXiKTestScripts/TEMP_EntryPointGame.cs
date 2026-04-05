@@ -8,22 +8,20 @@ namespace FiXiKTestScripts
     {
         [SerializeField] private ColorSetConfig _colorSet;
         [SerializeField] private Player _player;
-        [SerializeField] private Enemy _enemy;
         [SerializeField] private Bullet _bulletPrefab;
 
         private List<Color> _colors;
 
-        private void Start()
+        private void Awake()
         {
             _colors = new(_colorSet.Colors);
 
             Shooter shooter = new(_player, _bulletPrefab);
-
-            _player.Init(shooter);
+            _player.SetShooter(shooter);
             _player.GetComponent<Character>().SetColor(GiveColor());
         }
 
-        private Color GiveColor()
+        public Color GiveColor()
         {
             if (_colors.Count == 0)
                 throw new ArgumentNullException("Набор цветов закончился");

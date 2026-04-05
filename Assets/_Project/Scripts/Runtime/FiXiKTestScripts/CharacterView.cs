@@ -13,11 +13,7 @@ namespace FiXiKTestScripts
         private void OnDisable() =>
             _character.ColorChanged -= OnColorChanged;
 
-        private void OnColorChanged(Color color)
-        {
+        private void OnColorChanged(Color color) =>
             _renderer.color = color;
-
-            Debug.Log("Задан новый цвет:" + color);
-        }
     }
 }
