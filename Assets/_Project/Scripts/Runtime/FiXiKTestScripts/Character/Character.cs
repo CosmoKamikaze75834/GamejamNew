@@ -17,6 +17,8 @@ namespace FiXiKTestScripts
 
         public Color Color => _color;
 
+        public float Speed => _mover.Speed;
+
         private void Awake()
         {
             _mover = new Mover(_rigidbody, OnDestinationReached);

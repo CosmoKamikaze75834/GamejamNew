@@ -20,6 +20,8 @@ namespace FiXiKTestScripts
             _destinationReached = destinationReached;
         }
 
+        public float Speed => _speed;
+
         public void SetSpeed(float speed)
         {
             if (speed < 0)

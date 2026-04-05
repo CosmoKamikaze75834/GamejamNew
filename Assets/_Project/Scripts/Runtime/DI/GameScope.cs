@@ -1,4 +1,3 @@
-using System;
 using FiXiKTestScripts;
 using Unity.Cinemachine;
 using UnityEngine;

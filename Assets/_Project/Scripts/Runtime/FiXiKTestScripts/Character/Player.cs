@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -11,10 +12,14 @@ namespace FiXiKTestScripts
         private Camera _camera;
         private Shooter _shooter;
         private IInputReader _inputReader;
+        private int _recruitsCount;
+        private readonly List<Npc> _recruits = new();
 
         private Vector2? _followTarget;
 
         public Color Color => _character.Color;
+
+        public int RecruitsCount => _recruitsCount;
 
         public Transform Transform { get; private set; }
 
@@ -58,6 +63,21 @@ namespace FiXiKTestScripts
 
         public void SetShooter(Shooter shooter) =>
             _shooter = shooter;
+
+        public void AddRecruit(Npc npc)
+        {
+            if (!_recruits.Contains(npc))
+            {
+                _recruits.Add(npc);
+                _recruitsCount++;
+            }
+        }
+
+        public void RemoveRecruit(Npc npc)
+        {
+            if (_recruits.Remove(npc))
+                _recruitsCount--;
+        }
 
         private Vector2 CalculateDirection()
         {

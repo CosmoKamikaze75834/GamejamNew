@@ -6,7 +6,9 @@ namespace FiXiKTestScripts
     public class EnemyFactory : MonoBehaviour
     {
         [SerializeField] private Enemy _prefab;
+        [SerializeField] private float _reloadTime = 2;
         [SerializeField] private float _centerDeviation = 24;
+        [SerializeField] private float _movementSpeed = 4;
 
         private ShooterFactory _shooterFactory;
         private ConspiracyTheoryFactory _conspiracyTheoryFactory;
@@ -35,10 +37,15 @@ namespace FiXiKTestScripts
 
                 Enemy enemy = Instantiate(_prefab, position, rotation);
                 Shooter shooter = _shooterFactory.Get(enemy);
+                shooter.SetReloadTime(_reloadTime);
                 enemy.SetShooter(shooter);
-                enemy.GetComponent<Character>().SetColor(_colorFactory.Give());
 
-                ConspiracyTheory theory = _conspiracyTheoryFactory.Get(enemy.transform);
+                Character character = enemy.GetComponent<Character>();
+
+                character.SetColor(_colorFactory.Give());
+                character.SetSpeed(_movementSpeed);
+
+                _conspiracyTheoryFactory.Get(enemy.transform);
             }
         }
     }

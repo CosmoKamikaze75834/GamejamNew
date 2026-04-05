@@ -37,10 +37,4 @@ namespace FiXiKTestScripts
             return true;
         }
     }
-
-    public interface IAttacker
-    {
-        Color Color { get; }
-        Transform Transform { get; }
-    }
 }

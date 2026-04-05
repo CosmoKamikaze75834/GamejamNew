@@ -46,8 +46,6 @@ public class PopUp : MonoBehaviour
 
     public void Hide()
     {
-        Debug.Log(nameof(Hide));
-
         if (IsActive == false)
             return;
 
