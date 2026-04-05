@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 9220619723381663662}
   - component: {fileID: 4279831053693085472}
   - component: {fileID: 4067235727488392047}
-  - component: {fileID: 4706889162382242604}
+  - component: {fileID: 756468546665571851}
   m_Layer: 0
   m_Name: NextDifficultyLevel
   m_TagString: Untagged
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4706889162382242604
+--- !u!114 &756468546665571851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1636,9 +1636,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5073519488659952474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e70eb318f6563bb46bcc361a938e04fc, type: 3}
+  m_Script: {fileID: 11500000, guid: ead7e489d4a127245a98940bc04e5374, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NextLanguageButton
+  m_EditorClassIdentifier: Assembly-CSharp::NextDifficultyButton
 --- !u!1 &5179436758523043040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,7 +3668,7 @@ GameObject:
   - component: {fileID: 6460748653479272934}
   - component: {fileID: 4082361822675254429}
   - component: {fileID: 6742137112975918014}
-  - component: {fileID: 2197653915659353489}
+  - component: {fileID: 7620416355536114537}
   m_Layer: 0
   m_Name: PreviosDifficultyLevel
   m_TagString: Untagged
@@ -3778,7 +3778,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2197653915659353489
+--- !u!114 &7620416355536114537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3787,6 +3787,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9086785275326682316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18215c0de7e10704ab84bc876c19e31b, type: 3}
+  m_Script: {fileID: 11500000, guid: 47e4023677b598b43973ad2c136f307f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PreviousLanguageButton
+  m_EditorClassIdentifier: Assembly-CSharp::PreviousDifficultyButton
