@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FiXiKTestScripts
@@ -14,6 +15,8 @@ namespace FiXiKTestScripts
         private Camera _camera;
         private IInputReader _inputReader;
         private Vector2? _followTarget;
+
+        public event Action<SmallPlayer> Required;
 
         public Transform Transform { get; private set; }
 
@@ -68,6 +71,8 @@ namespace FiXiKTestScripts
             Unsubscribe();
             enabled = false;
             _npc.enabled = true;
+
+            Required?.Invoke(this);
 
             return _npc;
         }

@@ -8,11 +8,15 @@ namespace FiXiKTestScripts
         [SerializeField] private Npc _prefab;
         [SerializeField] private WandererStatsConfig _wandererStatsConfig;   
         [SerializeField] private FleeBehaviourStatsConfig _fleeBehaviourStatsConfig;   
-        [SerializeField] private float _centerDeviation = 24;
+        [SerializeField] private Transform _minPositionMap;
+        [SerializeField] private Transform _maxPositionMap;
+
 
         public event Action<Npc> NpcCreated;
 
-        private float GetRandom => UnityEngine.Random.Range(-_centerDeviation, _centerDeviation);
+        private float GetRandomX => UnityEngine.Random.Range(_minPositionMap.position.x, _maxPositionMap.position.x);
+
+        private float GetRandomY => UnityEngine.Random.Range(_minPositionMap.position.y, _maxPositionMap.position.y);
 
         public void Spawn(int count)
         {
@@ -20,7 +24,7 @@ namespace FiXiKTestScripts
 
             for (int i = 0; i < count; i++)
             {
-                Vector3 position = new(GetRandom, GetRandom, 0);
+                Vector3 position = new(GetRandomX, GetRandomY, 0);
                 Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Npc npc = Instantiate(_prefab, position, rotation);

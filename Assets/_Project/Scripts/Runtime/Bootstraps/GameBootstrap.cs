@@ -10,6 +10,7 @@ public class GameBootstrap : BootstrapBase
     [SerializeField] private RadioFactory _radioFactory;
     [SerializeField] private GameStats _gameStats;
     [SerializeField] private PopUp _menuButtons;
+    [SerializeField] private PopUp _losePopUp;
     [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private List<PopUp> _popUpList;
     [SerializeField] private List<MediatorBase> _mediators;
@@ -63,6 +64,14 @@ public class GameBootstrap : BootstrapBase
         _pauseSwitcher.Lock();
         _controlPopUp.Show();
         _secondControlPopUp.Hide();
+
+        player.Required += OnPlayerRequired;
+    }
+
+    private void OnPlayerRequired(SmallPlayer smallPlayer)
+    {
+        smallPlayer.Required -= OnPlayerRequired;
+        _losePopUp.Show();
     }
 
     private void OnDestroy()

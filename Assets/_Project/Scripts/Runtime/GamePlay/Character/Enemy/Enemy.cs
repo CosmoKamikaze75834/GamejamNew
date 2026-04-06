@@ -8,6 +8,8 @@ namespace FiXiKTestScripts
     [RequireComponent(typeof(Character))]
     public class Enemy : MonoBehaviour, IAttacker, IEntity
     {
+        [SerializeField] private Transform _bulletStartPosition;
+
         private readonly List<IEntity> _cachedTargets = new();
         private readonly List<IAttacker> _cachedAttackers = new();
         private readonly List<Npc> _recruits = new();
@@ -69,7 +71,7 @@ namespace FiXiKTestScripts
                 {
                     Vector2 shootDir = ((Vector2)shootTarget.Transform.position - (Vector2)Transform.position).normalized;
                     _character.Rotate(shootDir, deltaTime);
-                    _shooter?.TryShoot(Transform.position, shootDir);
+                    _shooter?.TryShoot(_bulletStartPosition.position, shootDir);
                 }
             }
             else
@@ -88,7 +90,7 @@ namespace FiXiKTestScripts
                     if (distanceToTarget <= _stats.AttackDistance)
                     {
                         Vector2 direction = (targetPos - (Vector2)Transform.position).normalized;
-                        _shooter?.TryShoot(Transform.position, direction);
+                        _shooter?.TryShoot(_bulletStartPosition.position, direction);
                     }
                 }
                 else

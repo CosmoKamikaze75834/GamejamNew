@@ -7,6 +7,7 @@ namespace FiXiKTestScripts
     [RequireComponent(typeof(Character))]
     public class PlayerBroadcaster : MonoBehaviour, IAttacker, IEntity
     {
+        [SerializeField] private Transform _bulletStartPosition;
         [SerializeField] private float _originalSpeed;
         [SerializeField] private float _keysRotationSpeed = 300f;
 
@@ -117,6 +118,6 @@ namespace FiXiKTestScripts
             _followTarget = null;
 
         private void OnShootPressed() =>
-            _shooter.TryShoot(transform.position, transform.up);
+            _shooter.TryShoot(_bulletStartPosition.position, transform.up);
     }
 }
