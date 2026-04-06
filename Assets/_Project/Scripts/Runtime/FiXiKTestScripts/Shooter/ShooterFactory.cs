@@ -9,7 +9,7 @@ namespace FiXiKTestScripts
             _bulletPrefab = bulletPrefab;
         }
 
-        public Shooter Get(IAttacker attacker) =>
-            new(attacker, _bulletPrefab);
+        public Shooter Get(IAttacker attacker, float reloadTime) =>
+            new(attacker, _bulletPrefab, reloadTime);
     }
 }

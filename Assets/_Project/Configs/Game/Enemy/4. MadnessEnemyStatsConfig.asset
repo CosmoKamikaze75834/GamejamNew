@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 138d615384ba7d840a8c5c95f3ebe2f4, type: 3}
-  m_Name: EasyEnemyStatsConfig
+  m_Name: 4. MadnessEnemyStatsConfig
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.EnemyStatsConfig
   _enemyStats:
     _targetLayers:
       serializedVersion: 2
       m_Bits: 4294967295
-    _visibleDistance: 10
-    _attackDistance: 5
+    _visibleDistance: 7
+    _attackDistance: 9
     _scanInterval: 0.5
-    _fleeSpeedMultiplier: 1.2
-    _movementSpeed: 4
-    _reloadTime: 2
+    _fleeSpeedMultiplier: 1.75
+    _movementSpeed: 7
+    _reloadTime: 0.3
+    _isEnemyAllianceEnabled: 1

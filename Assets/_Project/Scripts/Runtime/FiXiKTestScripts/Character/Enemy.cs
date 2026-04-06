@@ -121,13 +121,21 @@ namespace FiXiKTestScripts
 
                 if (entity is IAttacker attacker && attacker != (IAttacker)this)
                 {
+                    if (_stats.IsEnemyAllianceEnabled && attacker is Enemy)
+                        continue;
+
                     _cachedAttackers.Add(attacker);
 
                     continue;
                 }
 
                 if (entity is Npc npc && npc.Owner != (IAttacker)this)
+                {
+                    if (_stats.IsEnemyAllianceEnabled && npc.Owner is Enemy)
+                        continue;
+
                     _cachedTargets.Add(npc);
+                }
             }
         }
 

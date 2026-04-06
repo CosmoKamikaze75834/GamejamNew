@@ -47,8 +47,7 @@ namespace FiXiKTestScripts
                 enemy.Init(stats, _wandererStatsConfig.WandererStats);
                 enemy.SetColor(_colorFactory.Give());
 
-                Shooter shooter = _shooterFactory.Get(enemy);
-                shooter.SetReloadTime(stats.ReloadTime);
+                Shooter shooter = _shooterFactory.Get(enemy, stats.ReloadTime);
                 enemy.SetShooter(shooter);
 
                 ConspiracyTheory theory = _conspiracyTheoryFactory.Get(enemy.transform);

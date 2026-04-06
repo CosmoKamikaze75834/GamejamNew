@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace FiXiKTestScripts
 {
@@ -35,7 +34,7 @@ namespace FiXiKTestScripts
             Player player = Instantiate(_prefab, position, rotation);
             player.Init(_inputReader);
             player.SetColor(_colorFactory.Give());
-            player.SetShooter(_shooterFactory.Get(player));
+            player.SetShooter(_shooterFactory.Get(player, 0.5f));
             ConspiracyTheory theory = _conspiracyTheoryFactory.Get(player.transform);
             player.SetTeamName(theory.LangData);
 

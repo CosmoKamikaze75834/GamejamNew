@@ -13,6 +13,7 @@ namespace FiXiKTestScripts
         [SerializeField] private float _fleeSpeedMultiplier = 1.5f;
         [SerializeField] private float _movementSpeed = 4;
         [SerializeField] private float _reloadTime = 2;
+        [SerializeField] private bool _isEnemyAllianceEnabled = false;
 
         public LayerMask TargetLayers => _targetLayers;
 
@@ -27,5 +28,7 @@ namespace FiXiKTestScripts
         public float MovementSpeed => _movementSpeed;
 
         public float ReloadTime => _reloadTime;
+
+        public bool IsEnemyAllianceEnabled => _isEnemyAllianceEnabled;
     }
 }

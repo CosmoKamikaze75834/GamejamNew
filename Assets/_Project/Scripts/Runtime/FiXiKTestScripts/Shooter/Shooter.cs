@@ -9,12 +9,17 @@ namespace FiXiKTestScripts
         private readonly Bullet _bulletPrefab;
 
         private float _lastShootTime = -Mathf.Infinity;
-        private float _reloadTime = 0.5f;
+        private float _reloadTime;
 
-        public Shooter(IAttacker attaker, Bullet bulletPrefab)
+        public Shooter(IAttacker attaker, Bullet bulletPrefab, float reloadTime)
         {
             _attacker = attaker;
             _bulletPrefab = bulletPrefab;
+
+            if (reloadTime <= 0)
+                throw new ArgumentOutOfRangeException(nameof(reloadTime), reloadTime, "Значение должно быть больше нуля");
+
+            _reloadTime = reloadTime;
         }
 
         public void SetReloadTime(float time)
