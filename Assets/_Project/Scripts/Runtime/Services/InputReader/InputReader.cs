@@ -3,13 +3,21 @@ using UnityEngine;
 
 public class InputReader : IInputReader, IDisposable
 {
-    private const KeyCode CommandEscape = KeyCode.Escape;
-    private const string CommandHorizontalMove = "Horizontal";
-    private const string CommandVerticalMove = "Vertical";
-    private const int CommandShoot = 0;
+    private const KeyCode KeyEscape = KeyCode.Escape;
+    private const KeyCode KeyShoot = KeyCode.Space;
+    private const KeyCode KeyRotateLeft = KeyCode.Q;
+    private const KeyCode KeyRotateRight = KeyCode.E;
+    private const KeyCode KeyRotateLeft2 = KeyCode.LeftArrow;
+    private const KeyCode KeyRotateRight2 = KeyCode.RightArrow;
+    private const string AxisHorizontalMove = "Horizontal";
+    private const string AxisVerticalMove = "Vertical";
+    private const int MouseShoot = 0;
     private const int CommandFollowPoint = 1;
 
     private readonly IUpdateService _updateService;
+    private readonly float _rotationAcceleration = 2f;
+    private readonly float _rotationDeceleration = 30f;
+    private float _targetRotationAim;
 
     public InputReader(IUpdateService updateService)
     {
@@ -24,10 +32,12 @@ public class InputReader : IInputReader, IDisposable
 
     public Vector2 Movement { get; private set; }
 
-    public Vector2 PointPosition { get; private set; }
+    public Vector2? PointPosition { get; private set; }
+
+    public float RotationAim { get; private set; }
 
     public void Dispose() =>
-        _updateService.Unsubscribe(OnUpdate, UpdateType.Update);
+            _updateService.Unsubscribe(OnUpdate, UpdateType.Update);
 
     private void OnUpdate(float deltaTime)
     {
@@ -36,23 +46,51 @@ public class InputReader : IInputReader, IDisposable
         ReadLook();
         ReadFollowPoint();
         ReadShoot();
+
+        if (_targetRotationAim != RotationAim)
+        {
+            float step = (_targetRotationAim == 0)
+                ? _rotationDeceleration * deltaTime
+                : _rotationAcceleration * deltaTime;
+            RotationAim = Mathf.MoveTowards(RotationAim, _targetRotationAim, step);
+        }
     }
 
     private void ReadEscape()
     {
-        if (Input.GetKeyDown(CommandEscape))
+        if (Input.GetKeyDown(KeyEscape))
             EscapePressed?.Invoke();
     }
 
     private void ReadMovement()
     {
-        Movement = 
-            Input.GetAxis(CommandHorizontalMove) * Vector2.right + 
-            Input.GetAxis(CommandVerticalMove) * Vector2.up;
+        Movement =
+            Input.GetAxis(AxisHorizontalMove) * Vector2.right +
+            Input.GetAxis(AxisVerticalMove) * Vector2.up;
     }
-    
-    private void ReadLook() =>
-        PointPosition = Input.mousePosition;
+
+    private void ReadLook()
+    {
+        if (Input.mousePositionDelta != Vector3.zero)
+        {
+            PointPosition = Input.mousePosition;
+            _targetRotationAim = 0;
+        }
+        else if (Input.GetKey(KeyRotateLeft) || Input.GetKey(KeyRotateLeft2))
+        {
+            PointPosition = null;
+            _targetRotationAim = -1;
+        }
+        else if (Input.GetKey(KeyRotateRight) || Input.GetKey(KeyRotateRight2))
+        {
+            PointPosition = null;
+            _targetRotationAim = 1;
+        }
+        else
+        {
+            _targetRotationAim = 0;
+        }
+    }
 
     private void ReadFollowPoint()
     {
@@ -62,7 +100,7 @@ public class InputReader : IInputReader, IDisposable
 
     private void ReadShoot()
     {
-        if (Input.GetMouseButton(CommandShoot))
+        if (Input.GetMouseButton(MouseShoot) || Input.GetKey(KeyShoot))
             ShootPressed?.Invoke();
     }
 }

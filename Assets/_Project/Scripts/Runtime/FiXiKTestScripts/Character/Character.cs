@@ -42,8 +42,11 @@ namespace FiXiKTestScripts
         public void Rotate(Vector2 direction, float deltaTime) =>
             _rotator.Rotate(direction, deltaTime);
 
+        public void RotateBy(float deltaAngle, float deltaTime) =>
+            _rotator.RotateBy(deltaAngle, deltaTime);
+
         public void RotateTo(Vector2 target, float deltaTime) =>
-            _rotator.Rotate(target, deltaTime);
+            _rotator.RotateTo(target, deltaTime);
 
         private void OnDestinationReached() =>
             DestinationReached?.Invoke();

@@ -8,6 +8,7 @@ namespace FiXiKTestScripts
     public class Player : MonoBehaviour, IAttacker, IEntity
     {
         [SerializeField] private float _originalSpeed;
+        [SerializeField] private float _keysRotationSpeed = 300f;
 
         private readonly List<Npc> _recruits = new();
 
@@ -43,14 +44,22 @@ namespace FiXiKTestScripts
 
         private void FixedUpdate()
         {
-            Vector3 playerScreenPos = _camera.WorldToScreenPoint(_character.transform.position);
-            Vector2 mouseScreenPos = _inputReader.PointPosition;
-            Vector2 direction = mouseScreenPos - (Vector2)playerScreenPos;
+            float deltaTime = Time.fixedDeltaTime;
 
-            _character.Rotate(direction, Time.deltaTime);
+            if (_inputReader.PointPosition.HasValue)
+            {
+                Vector3 playerScreenPos = _camera.WorldToScreenPoint(_character.transform.position);
+                Vector2 direction = _inputReader.PointPosition.Value - (Vector2)playerScreenPos;
+                _character.Rotate(direction, deltaTime);
+            }
+            else if (_inputReader.RotationAim != 0)
+            {
+                float deltaAngle = _inputReader.RotationAim * _keysRotationSpeed * deltaTime;
+                _character.RotateBy(deltaAngle, deltaTime);
+            }
 
             if (_followTarget.HasValue)
-                _character.MoveTo(_followTarget.Value, Time.fixedDeltaTime);
+                _character.MoveTo(_followTarget.Value, deltaTime);
             else
                 _character.Move(_inputReader.Movement);
         }
@@ -92,7 +101,10 @@ namespace FiXiKTestScripts
 
         private Vector2 CalculateDirection()
         {
-            Vector2 screenPos = _inputReader.PointPosition;
+            if (_inputReader.PointPosition.HasValue == false)
+                return Vector2.zero;
+
+            Vector2 screenPos = _inputReader.PointPosition.Value;
             Vector3 worldPos = _camera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 0f));
 
             return (Vector2)worldPos;

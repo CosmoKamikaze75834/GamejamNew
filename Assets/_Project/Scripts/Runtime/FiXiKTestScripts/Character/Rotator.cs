@@ -28,5 +28,12 @@ namespace FiXiKTestScripts
             Vector2 direction = worldPoint - (Vector2)_transform.position;
             Rotate(direction, deltaTime);
         }
+
+        public void RotateBy(float deltaAngle, float deltaTime)
+        {
+            float newAngle = _transform.eulerAngles.z - deltaAngle;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, newAngle);
+            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, _speed * deltaTime);
+        }
     }
 }
