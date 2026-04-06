@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: MadnessEnemyStatsConfig
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.EnemyStatsConfig
   _enemyStats:
-    _visibleDistance: 10
-    _attackDistance: 5
+    _targetLayers:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    _visibleDistance: 15
+    _attackDistance: 8
     _scanInterval: 0.5
-    _fleeSpeedMultiplier: 1.5
-    _movementSpeed: 4
-    _reloadTime: 2
-  _difficultyLevel:
-    _ru: "\u0411\u0415\u0417\u0423\u041C\u0418\u0415"
-    _en: MADNESS
+    _fleeSpeedMultiplier: 1.75
+    _movementSpeed: 7
+    _reloadTime: 1.3

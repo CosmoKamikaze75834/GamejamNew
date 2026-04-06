@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.NpcFactory
   _prefab: {fileID: 8833241806232385252, guid: 2f2195b2769a7ec47ab3f92624b06a05, type: 3}
   _wandererStatsConfig: {fileID: 11400000, guid: 04b370e1df90d2b4cbdfba077252c29f, type: 2}
+  _fleeBehaviourStatsConfig: {fileID: 11400000, guid: df54bc70dda968746a4c0c3d2a52a4ba, type: 2}
   _centerDeviation: 24
 --- !u!4 &213969771
 Transform:
@@ -829,7 +830,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.EnemyFactory
   _prefab: {fileID: 5532276765085733290, guid: 7547f2ddfcc6aab4cb9adb164acf2046, type: 3}
-  _enemyStatsConfig: {fileID: 11400000, guid: a4a431c444131764ca9999c5042941e5, type: 2}
+  _easyEnemyStatsConfig: {fileID: 11400000, guid: a4a431c444131764ca9999c5042941e5, type: 2}
+  _normalEnemyStatsConfig: {fileID: 11400000, guid: fa0e063259f8b7445a02cda2e617f311, type: 2}
+  _hardEnemyStatsConfig: {fileID: 11400000, guid: 1d02a121a54968c47977faadf91ab135, type: 2}
+  _madnessEnemyStatsConfig: {fileID: 11400000, guid: 4251c3c30c09fbe4b84337f5ee3f0425, type: 2}
   _wandererStatsConfig: {fileID: 11400000, guid: 384b3b3e1e592504aa4a93b8b99dec9f, type: 2}
   _centerDeviation: 24
 --- !u!1 &530578625
@@ -2380,17 +2384,25 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 911260643737250035, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2681854003085372436, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3804035147777940341, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_Name
       value: SettingsPopUp
       objectReference: {fileID: 0}
     - target: {fileID: 3804035147777940341, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073519488659952474, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645756288814168416, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2400,15 +2412,19 @@ PrefabInstance:
       objectReference: {fileID: 827742382}
     - target: {fileID: 6647118108231423305, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6935527232493416619, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207623555138362299, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7339198410505318342, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7463176395973794049, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: _popUpsToHide.Array.size
@@ -2420,7 +2436,7 @@ PrefabInstance:
       objectReference: {fileID: 827742382}
     - target: {fileID: 8254486369067807548, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9055741861164011197, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2460,6 +2476,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9055741861164011197, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086785275326682316, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

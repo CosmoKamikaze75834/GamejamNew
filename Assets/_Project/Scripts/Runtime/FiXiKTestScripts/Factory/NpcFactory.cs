@@ -7,6 +7,7 @@ namespace FiXiKTestScripts
     {
         [SerializeField] private Npc _prefab;
         [SerializeField] private WandererStatsConfig _wandererStatsConfig;   
+        [SerializeField] private FleeBehaviourStatsConfig _fleeBehaviourStatsConfig;   
         [SerializeField] private float _centerDeviation = 24;
 
         public event Action<Npc> NpcCreated;
@@ -23,7 +24,7 @@ namespace FiXiKTestScripts
                 Quaternion rotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
 
                 Npc npc = Instantiate(_prefab, position, rotation);
-                npc.Init(_wandererStatsConfig.WandererStats);
+                npc.Init(_wandererStatsConfig.WandererStats, _fleeBehaviourStatsConfig.FleeBehaviourStats);
                 npc.SetColor(color);
                 NpcCreated?.Invoke(npc);
             }

@@ -16,6 +16,6 @@ MonoBehaviour:
     _minChangeInterval: 0.5
     _maxChangeInterval: 6
     _minDriftSpeed: 1
-    _maxDriftSpeed: 20
-    _minSpeed: 1
-    _maxSpeed: 5
+    _maxDriftSpeed: 10
+    _minSpeed: 0.5
+    _maxSpeed: 2

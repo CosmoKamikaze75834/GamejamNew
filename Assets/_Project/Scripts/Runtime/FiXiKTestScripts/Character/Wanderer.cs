@@ -17,10 +17,6 @@ namespace FiXiKTestScripts
             _character = character;
             _transform = character.transform;
             _stats = stats;
-
-            SetRandomDirection();
-            ScheduleNextChange();
-            SetRandomSpeed();
         }
             
         public void UpdateWander(float deltaTime)

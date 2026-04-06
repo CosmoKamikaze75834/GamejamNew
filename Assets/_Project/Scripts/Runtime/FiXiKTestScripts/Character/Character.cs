@@ -6,28 +6,27 @@ namespace FiXiKTestScripts
     [RequireComponent(typeof(Rigidbody2D))]  
     public class Character : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D _rigidbody;
-
+        private Rigidbody2D _rigidbody;
         private Mover _mover;
         private Rotator _rotator;
-        private Color _color;
 
         public event Action<Color> ColorChanged;
         public event Action DestinationReached;
 
-        public Color Color => _color;
+        public Color Color { get; private set; }
 
         public float Speed => _mover.Speed;
 
-        private void Awake()
+        public void Init(float speed)
         {
-            _mover = new Mover(_rigidbody, OnDestinationReached);
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _mover = new Mover(_rigidbody, speed, OnDestinationReached);
             _rotator = new Rotator(transform);
         }
 
         public void SetColor(Color color)
         {
-            _color = color;
+            Color = color;
             ColorChanged?.Invoke(color);
         }
 

@@ -12,7 +12,7 @@ namespace FiXiKTestScripts
         private ShooterFactory _shooterFactory;
         private ConspiracyTheoryFactory _conspiracyTheoryFactory;
         private ColorFactory _colorFactory;
-        private IObjectResolver _resolver;
+        private IInputReader _inputReader;
 
         public event Action<Player> PlayerCreated;
 
@@ -21,20 +21,21 @@ namespace FiXiKTestScripts
             ShooterFactory shooterFactory,
             ConspiracyTheoryFactory conspiracyTheoryFactory,
             ColorFactory colorFactory,
-            IObjectResolver resolver)
+            IInputReader resolver)
         {
             
             _shooterFactory = shooterFactory;
             _conspiracyTheoryFactory = conspiracyTheoryFactory;
             _colorFactory = colorFactory;
-            _resolver = resolver;
+            _inputReader = resolver;
         }
 
         public Player Create(Vector3 position, Quaternion rotation)
         {
-            Player player = _resolver.Instantiate(_prefab, position, rotation);
+            Player player = Instantiate(_prefab, position, rotation);
+            player.Init(_inputReader);
+            player.SetColor(_colorFactory.Give());
             player.SetShooter(_shooterFactory.Get(player));
-            player.GetComponent<Character>().SetColor(_colorFactory.Give());
             ConspiracyTheory theory = _conspiracyTheoryFactory.Get(player.transform);
             player.SetTeamName(theory.LangData);
 

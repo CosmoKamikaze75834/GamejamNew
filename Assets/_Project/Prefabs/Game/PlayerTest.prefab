@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71785947ccf367746929eb50e043fef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Player
-  _character: {fileID: 8380830199050234343}
+  _originalSpeed: 6
 --- !u!114 &8380830199050234343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19a3f90f5c811f42ba2b6fbad8b970c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Character
-  _rigidbody: {fileID: 959294223466472946}
 --- !u!114 &4965648029612164921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515a208d05b0b8e4b86067aa857f76d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.CharacterView
-  _character: {fileID: 8380830199050234343}
   _renderer: {fileID: 4776571893700068393}
 --- !u!114 &7308472466357136359
 MonoBehaviour:

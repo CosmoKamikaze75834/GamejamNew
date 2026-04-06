@@ -1,17 +1,19 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace FiXiKTestScripts
 {
     [RequireComponent(typeof(Character))]
     public class Npc : MonoBehaviour, IEntity
     {
-        [SerializeField] private Character _character;
-        [SerializeField] private FleeBehavior _fleeBehavior;
+        [SerializeField] private float _originalSpeed = 4;
 
         [Header("Following Settings")]
         [SerializeField] private float _maxFollowSpeed = 60f;
         [SerializeField] private float _maxFollowDistance = 10f;
 
+        private Character _character;
+        private FleeBehavior _fleeBehavior;
         private Wanderer _wanderer;
 
         public IAttacker Owner { get; private set; }
@@ -20,20 +22,21 @@ namespace FiXiKTestScripts
 
         public Color Color => _character.Color;
 
-        public void Init(WandererStats stats)
+        public void Init(WandererStats wandererStats, FleeBehaviourStats fleeStats)
         {
+            _character = GetComponent<Character>();
+            _character.Init(_originalSpeed);
             Transform = transform;
-            _wanderer = new(_character, stats);
-
-            if (_fleeBehavior != null)
-                _fleeBehavior.SetOwner(Owner);
+            _wanderer = new(_character, wandererStats);
+            _fleeBehavior = new(_character, fleeStats);
+            _fleeBehavior.SetOwner(Owner);
         }
 
         private void FixedUpdate()
         {
             float deltaTime = Time.deltaTime;
 
-            if (_fleeBehavior != null && _fleeBehavior.UpdateFlee(deltaTime, out _))
+            if (_fleeBehavior.UpdateFlee(deltaTime, out _))
                 return;
 
             if (Owner != null)
@@ -44,12 +47,9 @@ namespace FiXiKTestScripts
                 float t = Mathf.Clamp01(distance / _maxFollowDistance);
                 float currentSpeed = Mathf.Lerp(0f, _maxFollowSpeed, t);
                 _character.SetSpeed(currentSpeed);
-
                 _character.RotateTo(ownerPos, deltaTime);
                 _character.MoveTo(ownerPos, deltaTime);
-
-                if (_fleeBehavior != null)
-                    _fleeBehavior.ResetSpeed();
+                _fleeBehavior.ResetSpeed();
             }
             else
             {
@@ -69,8 +69,7 @@ namespace FiXiKTestScripts
             Owner = attacker;
             attacker.AddRecruit(this);
 
-            if (_fleeBehavior != null)
-                _fleeBehavior.SetOwner(attacker);
+            _fleeBehavior.SetOwner(attacker);
         }
     }
 }

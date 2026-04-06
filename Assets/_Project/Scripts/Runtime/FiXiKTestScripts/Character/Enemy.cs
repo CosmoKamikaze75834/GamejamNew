@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace FiXiKTestScripts
 {
+    [RequireComponent(typeof(Character))]
     public class Enemy : MonoBehaviour, IAttacker, IEntity
     {
-        [SerializeField] private Character _character;
-        [SerializeField] private LayerMask _targetLayers;
-
         private readonly List<IEntity> _cachedTargets = new();
         private readonly List<IAttacker> _cachedAttackers = new();
         private readonly List<Npc> _recruits = new();
 
+        private Character _character;
         private EnemyStats _stats;
+        private WandererStats _wandererStats;
         private Wanderer _wanderer;
         private Shooter _shooter;
         private IEntity _currentTarget;
@@ -33,15 +33,17 @@ namespace FiXiKTestScripts
 
         public LangData TeamName { get; private set; }
 
-        public void Init(WandererStats stats)
+        public void Init(EnemyStats stats, WandererStats wandererStats)
         {
+            _stats = stats;
+            _wandererStats = wandererStats;
+            _character = GetComponent<Character>();
+            _character.Init(_stats.MovementSpeed);
             Transform = transform;
-            _wanderer = new(_character, stats);
-        }
-
-        private void Start() =>
+            _wanderer = new(_character, _wandererStats);
             _originalSpeed = _character.Speed;
-
+        }
+            
         private void Update()
         {
             float deltaTime = Time.deltaTime;
@@ -96,9 +98,6 @@ namespace FiXiKTestScripts
             }
         }
 
-        public void SetStats(EnemyStats stats) =>
-            _stats = stats;
-
         public void SetColor(Color color) =>
             _character.SetColor(color);
 
@@ -110,7 +109,7 @@ namespace FiXiKTestScripts
 
         private void PerformFilteredScan()
         {
-            List<IEntity> allTargets = Scanner.Scan(Transform.position, _stats.VisibleDistance, _targetLayers);
+            List<IEntity> allTargets = Scanner.Scan(Transform.position, _stats.VisibleDistance, _stats.TargetLayers);
 
             _cachedTargets.Clear();
             _cachedAttackers.Clear();
@@ -136,7 +135,7 @@ namespace FiXiKTestScripts
         {
             _threatToFlee = null;
 
-            var threats = _cachedAttackers
+            List<IAttacker> threats = _cachedAttackers
                 .Where(a => a.RecruitsCount >= RecruitsCount)
                 .ToList();
 
@@ -146,7 +145,7 @@ namespace FiXiKTestScripts
             float minDist = float.MaxValue;
             Vector2 myPos = Transform.position;
 
-            foreach (var threat in threats)
+            foreach (IAttacker threat in threats)
             {
                 if (threat.Transform == null) 
                     continue;
@@ -167,7 +166,7 @@ namespace FiXiKTestScripts
             float minDist = float.MaxValue;
             Vector2 myPos = Transform.position;
 
-            foreach (var target in _cachedTargets)
+            foreach (IEntity target in _cachedTargets)
             {
                 if (target == null || target.Transform == null) 
                     continue;
@@ -190,18 +189,20 @@ namespace FiXiKTestScripts
             float minDist = float.MaxValue;
             Vector2 myPos = Transform.position;
 
-            foreach (var target in _cachedTargets)
+            foreach (IEntity target in _cachedTargets)
             {
                 if (target == null || target.Transform == null)
                     continue;
 
                 float dist = Vector2.Distance(myPos, target.Transform.position);
+
                 if (dist < minDist && dist <= _stats.VisibleDistance)
                 {
                     minDist = dist;
                     nearest = target;
                 }
             }
+
             return nearest;
         }
 

@@ -1,28 +1,27 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace FiXiKTestScripts
 {
-    public class FleeBehavior : MonoBehaviour
+    public class FleeBehavior
     {
-        [SerializeField] private Character _character;
-        [SerializeField] private LayerMask _targetLayers;
-        [SerializeField] private float _detectionRadius = 8f;
-        [SerializeField] private float _fleeSpeedMultiplier = 1.5f;
-        [SerializeField] private float _scanInterval = 0.3f;
+        private readonly Character _character;
+        private readonly Transform _transform;
+        private readonly FleeBehaviourStats _stats;
+        private readonly float _originalSpeed;
 
         private IAttacker _owner;
         private float _lastScanTime;
         private IAttacker _nearestThreat;
-        private float _originalSpeed;
 
-        private void Awake()
+        public FleeBehavior(Character character, FleeBehaviourStats stats)
         {
-            if (_character == null)
-                _character = GetComponent<Character>();
-
-            if (_character != null)
-                _originalSpeed = _character.Speed;
+            _character = character;
+            _transform = character.transform;
+            _stats = stats;
+            _originalSpeed = _character.Speed;
         }
 
         public void SetOwner(IAttacker owner) => _owner = owner;
@@ -34,7 +33,7 @@ namespace FiXiKTestScripts
             if (_character == null)
                 return false;
 
-            if (Time.time >= _lastScanTime + _scanInterval)
+            if (Time.time >= _lastScanTime + _stats.ScanInterval)
             {
                 ScanForThreats();
                 _lastScanTime = Time.time;
@@ -43,22 +42,24 @@ namespace FiXiKTestScripts
             if (_nearestThreat == null || _nearestThreat.Transform == null)
                 return false;
 
-            Vector2 myPos = transform.position;
+            Vector2 myPos = _transform.position;
             Vector2 threatPos = _nearestThreat.Transform.position;
             Vector2 away = (myPos - threatPos).normalized;
 
             _character.Move(away);
             _character.Rotate(away, deltaTime);
-            _character.SetSpeed(_originalSpeed * _fleeSpeedMultiplier);
+            _character.SetSpeed(_originalSpeed * _stats.FleeSpeedMultiplier);
 
             fleeDirection = away;
+
             return true;
         }
 
         private void ScanForThreats()
         {
-            var allEntities = Scanner.Scan(transform.position, _detectionRadius, _targetLayers);
-            var threats = allEntities
+            List<IEntity> allEntities = Scanner.Scan(_transform.position, _stats.DetectionRadius, _stats.TargetLayers);
+
+            List<IAttacker> threats = allEntities
                 .Where(e => e is IAttacker attacker && attacker != _owner)
                 .Select(e => e as IAttacker)
                 .Where(a => a != null)
@@ -66,12 +67,15 @@ namespace FiXiKTestScripts
 
             _nearestThreat = null;
             float minDist = float.MaxValue;
-            Vector2 myPos = transform.position;
+            Vector2 myPos = _transform.position;
 
             foreach (var threat in threats)
             {
-                if (threat.Transform == null) continue;
+                if (threat.Transform == null) 
+                    continue;
+
                 float dist = Vector2.Distance(myPos, threat.Transform.position);
+
                 if (dist < minDist)
                 {
                     minDist = dist;
@@ -80,16 +84,7 @@ namespace FiXiKTestScripts
             }
         }
 
-        public void ResetSpeed()
-        {
-            if (_character != null)
-                _character.SetSpeed(_originalSpeed);
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, _detectionRadius);
-        }
+        public void ResetSpeed() =>
+            _character.SetSpeed(_originalSpeed);
     }
 }

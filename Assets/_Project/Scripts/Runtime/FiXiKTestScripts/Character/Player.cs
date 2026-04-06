@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using VContainer;
 
 namespace FiXiKTestScripts
 {
     [RequireComponent(typeof(Character))]
     public class Player : MonoBehaviour, IAttacker, IEntity
     {
-        [SerializeField] private Character _character;
+        [SerializeField] private float _originalSpeed;
 
+        private readonly List<Npc> _recruits = new();
+
+        private Character _character;
         private Camera _camera;
         private Shooter _shooter;
         private IInputReader _inputReader;
-        private int _recruitsCount;
-        private readonly List<Npc> _recruits = new();
-
         private Vector2? _followTarget;
+        private int _recruitsCount;
 
         public event Action CountChanged;
 
@@ -28,19 +28,18 @@ namespace FiXiKTestScripts
 
         public LangData TeamName { get; private set; }
 
-        [Inject]
-        public void Construct(IInputReader inputReader)
+        public void Init(IInputReader inputReader)
         {
             _inputReader = inputReader;
+            _character = GetComponent<Character>();
+            _character.Init(_originalSpeed);
+            Transform = transform;
             _camera = Camera.main;
 
             _inputReader.FollowPointPressed += OnFollowPointPressed;
             _inputReader.ShootPressed += OnShootPressed;
             _character.DestinationReached += OnDestinationReached;
         }
-
-        private void Awake() =>
-            Transform = transform;
 
         private void FixedUpdate()
         {
@@ -68,6 +67,9 @@ namespace FiXiKTestScripts
 
         public void SetTeamName(LangData langData) =>
             TeamName = langData;
+
+        public void SetColor(Color color) =>
+            _character.SetColor(color);
 
         public void AddRecruit(Npc npc)
         {

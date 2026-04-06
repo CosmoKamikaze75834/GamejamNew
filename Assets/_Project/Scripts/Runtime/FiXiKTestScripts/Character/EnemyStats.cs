@@ -6,12 +6,15 @@ namespace FiXiKTestScripts
     [Serializable]
     public class EnemyStats
     {
+        [SerializeField] private LayerMask _targetLayers;
         [SerializeField] private float _visibleDistance = 10f;
         [SerializeField] private float _attackDistance = 5f;
         [SerializeField] private float _scanInterval = 0.5f;
         [SerializeField] private float _fleeSpeedMultiplier = 1.5f;
         [SerializeField] private float _movementSpeed = 4;
         [SerializeField] private float _reloadTime = 2;
+
+        public LayerMask TargetLayers => _targetLayers;
 
         public float VisibleDistance => _visibleDistance;
 

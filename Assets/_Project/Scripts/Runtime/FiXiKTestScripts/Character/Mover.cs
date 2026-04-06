@@ -10,11 +10,16 @@ namespace FiXiKTestScripts
         private readonly Rigidbody2D _rigidbody;
         private readonly Transform _transform;
         private readonly Action _destinationReached;
-        private float _speed = 10f;
+        private readonly float _originalSpeed;
 
-        public Mover(Rigidbody2D rigidbody, Action destinationReached)
+        private float _speed;
+
+        public Mover(Rigidbody2D rigidbody, float originalSpeed, Action destinationReached)
         {
             _rigidbody = rigidbody != null ? rigidbody : throw new ArgumentNullException(nameof(rigidbody));
+
+            _originalSpeed = originalSpeed;
+            _speed = originalSpeed;
 
             _transform = _rigidbody.transform;
             _destinationReached = destinationReached;
@@ -29,6 +34,9 @@ namespace FiXiKTestScripts
 
             _speed = speed;
         }
+
+        public void SetOriginalSpeed() =>
+            _speed = _originalSpeed;
 
 
         public void Move(Vector2 direction) =>

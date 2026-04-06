@@ -194,10 +194,9 @@ GameObject:
   - component: {fileID: 385864219273222217}
   - component: {fileID: 2016955898477685650}
   - component: {fileID: 4583173450898295224}
-  - component: {fileID: 7982669016904728492}
   - component: {fileID: 8833241806232385252}
+  - component: {fileID: 7982669016904728492}
   - component: {fileID: 1537221835829993825}
-  - component: {fileID: 1283344826595944523}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -284,19 +283,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &7982669016904728492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266341132521332984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f19a3f90f5c811f42ba2b6fbad8b970c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Character
-  _rigidbody: {fileID: 4583173450898295224}
 --- !u!114 &8833241806232385252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,10 +295,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf253daca5e24ff4aa6e745b70a5fc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Npc
-  _character: {fileID: 7982669016904728492}
-  _fleeBehavior: {fileID: 1283344826595944523}
+  _originalSpeed: 4
   _maxFollowSpeed: 70
   _maxFollowDistance: 20
+--- !u!114 &7982669016904728492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266341132521332984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19a3f90f5c811f42ba2b6fbad8b970c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.Character
 --- !u!114 &1537221835829993825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,22 +324,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.CharacterView
   _character: {fileID: 7982669016904728492}
   _renderer: {fileID: 3690388927671851586}
---- !u!114 &1283344826595944523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266341132521332984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45ea0a42e636c546b66a23743690549, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.FleeBehavior
-  _character: {fileID: 7982669016904728492}
-  _targetLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  _detectionRadius: 6
-  _fleeSpeedMultiplier: 1.5
-  _scanInterval: 0.3

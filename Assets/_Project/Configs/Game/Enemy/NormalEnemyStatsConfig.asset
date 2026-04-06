@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: NormalEnemyStatsConfig
   m_EditorClassIdentifier: Assembly-CSharp::FiXiKTestScripts.EnemyStatsConfig
   _enemyStats:
-    _visibleDistance: 10
-    _attackDistance: 5
+    _targetLayers:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    _visibleDistance: 25
+    _attackDistance: 20
     _scanInterval: 0.5
-    _fleeSpeedMultiplier: 1.5
-    _movementSpeed: 4
-    _reloadTime: 2
-  _difficultyLevel:
-    _ru: "\u0421\u0440\u0435\u0434\u043D\u0438\u0439"
-    _en: Middle
+    _fleeSpeedMultiplier: 2
+    _movementSpeed: 10
+    _reloadTime: 1
