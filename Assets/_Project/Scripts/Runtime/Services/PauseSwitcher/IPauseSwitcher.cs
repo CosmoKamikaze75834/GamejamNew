@@ -1,6 +1,10 @@
 public interface IPauseSwitcher
 {
-    void Pause();
+    public void Pause();
 
-    void Unpause();
+    public void Unpause();
+
+    public void Lock();
+
+    public void Unock();
 }

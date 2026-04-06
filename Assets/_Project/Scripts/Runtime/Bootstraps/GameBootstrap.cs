@@ -5,6 +5,8 @@ using VContainer;
 
 public class GameBootstrap : BootstrapBase
 {
+    [SerializeField] private IntroPopup _controlPopUp;
+    [SerializeField] private IntroPopup _secondControlPopUp;
     [SerializeField] private RadioFactory _radioFactory;
     [SerializeField] private GameStats _gameStats;
     [SerializeField] private PopUp _menuButtons;
@@ -56,6 +58,11 @@ public class GameBootstrap : BootstrapBase
         _npcFactory.Spawn(_npcCount);        
         _gameStats.CreateLines();
         _radioFactory.Spawn(_enemyCount + 1);
+
+        _pauseSwitcher.Pause();
+        _pauseSwitcher.Lock();
+        _controlPopUp.Show();
+        _secondControlPopUp.Hide();
     }
 
     private void OnDestroy()

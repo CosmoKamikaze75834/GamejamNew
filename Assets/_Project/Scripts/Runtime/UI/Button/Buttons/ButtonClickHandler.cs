@@ -9,10 +9,10 @@ public abstract class ButtonClickHandler : MonoBehaviour
     private void Awake() =>
         _button = GetComponent<Button>();
 
-    private void OnEnable() =>
+    protected virtual void OnEnable() =>
         _button.onClick.AddListener(OnClick);
 
-    private void OnDisable() =>
+    protected virtual void OnDisable() =>
         _button.onClick.RemoveListener(OnClick);
 
     private void OnDestroy()
