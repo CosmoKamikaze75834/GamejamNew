@@ -15,5 +15,5 @@ MonoBehaviour:
   _startAlpha: 0
   _targetAlpha: 1
   _duration: 0.3
-  _delay: 0
+  _delay: 2.7
   _ease: 27
