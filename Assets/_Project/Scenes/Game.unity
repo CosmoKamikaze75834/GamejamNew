@@ -4255,6 +4255,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5073519488659952474, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6000679231984170247, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: _menuButtons
       value: 
@@ -4321,6 +4325,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9055741861164011197, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086785275326682316, guid: 45b4366c82f133a4b8dcc977f7b11bbc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
