@@ -10,6 +10,8 @@ namespace FiXiKTestScripts
 
         private readonly List<IAttacker> _attackers = new();
 
+        public event Action<IAttacker> AttackerAdded;
+
         public AttackerRegistry(PlayerFactory playerFactory, EnemyFactory enemyFactory)
         {
             _playerFactory = playerFactory;
@@ -29,7 +31,10 @@ namespace FiXiKTestScripts
                 _playerFactory.PlayerCreated -= OnCreated;
         }
 
-        private void OnCreated(IAttacker attacker) =>
+        private void OnCreated(IAttacker attacker)
+        {
             _attackers.Add(attacker);
+            AttackerAdded?.Invoke(attacker);
+        }
     }
 }

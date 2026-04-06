@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FiXiKTestScripts
 {
     [RequireComponent(typeof(Character))]
-    public class Player : MonoBehaviour, IAttacker, IEntity
+    public class PlayerBroadcaster : MonoBehaviour, IAttacker, IEntity
     {
         [SerializeField] private float _originalSpeed;
         [SerializeField] private float _keysRotationSpeed = 300f;

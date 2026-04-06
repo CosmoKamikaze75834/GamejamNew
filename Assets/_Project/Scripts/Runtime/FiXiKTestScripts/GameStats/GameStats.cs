@@ -26,8 +26,22 @@ namespace FiXiKTestScripts
             _lines = _lineStatsFactory.Get(_maximumLines);
             UpdateLines();
 
+            _attackerRegistry.AttackerAdded += OnAttackerAdded;
+
             foreach (IAttacker attacker in _attackerRegistry.Attackers)
                 attacker.CountChanged += OnCountChanged;
+        }
+
+        private void OnDestroy()
+        {
+            if (_attackerRegistry != null)
+                _attackerRegistry.AttackerAdded -= OnAttackerAdded;
+        }
+
+        private void OnAttackerAdded(IAttacker attacker)
+        {
+            attacker.CountChanged += OnCountChanged;
+            UpdateLines();
         }
 
         private void UpdateLines()
@@ -62,7 +76,6 @@ namespace FiXiKTestScripts
                 attacker.Color);
         }
 
-        private void OnCountChanged() =>
-            UpdateLines();
+        private void OnCountChanged() => UpdateLines();
     }
 }

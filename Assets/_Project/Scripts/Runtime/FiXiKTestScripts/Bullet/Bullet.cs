@@ -42,7 +42,22 @@ namespace FiXiKTestScripts
                 if (_attacker == entity)
                     return;
 
-                if (entity is Npc npc)
+                if (entity is SmallPlayer smallPlayer)
+                {                    
+                    Npc playerNpc = smallPlayer.ConvertToNpc();
+
+                    playerNpc.Recruit(_attacker);
+                    Destroy(smallPlayer);
+                }
+                else if(entity is SmallEnemy smallEnemy)
+                {
+                    Npc playerNpc = smallEnemy.ConvertToNpc();
+
+                    smallEnemy.InvokeRecruted();
+                    playerNpc.Recruit(_attacker);
+                    Destroy(smallEnemy);
+                }
+                else if (entity is Npc npc)
                 {
                     if (npc.Owner == _attacker)
                         return;

@@ -43,7 +43,7 @@ namespace FiXiKTestScripts
             _wanderer = new(_character, _wandererStats);
             _originalSpeed = _character.Speed;
         }
-            
+
         private void Update()
         {
             float deltaTime = Time.deltaTime;
@@ -114,7 +114,7 @@ namespace FiXiKTestScripts
             _cachedTargets.Clear();
             _cachedAttackers.Clear();
 
-            foreach (var entity in allTargets)
+            foreach (IEntity entity in allTargets)
             {
                 if (entity == (IEntity)this)
                     continue;
@@ -129,12 +129,19 @@ namespace FiXiKTestScripts
                     continue;
                 }
 
-                if (entity is Npc npc && npc.Owner != (IAttacker)this)
+                if ((entity is Npc npc) && npc.Owner != (IAttacker)this)
                 {
                     if (_stats.IsEnemyAllianceEnabled && npc.Owner is Enemy)
                         continue;
 
                     _cachedTargets.Add(npc);
+                }
+                else if ((entity is SmallPlayer smallPlayer))
+                {
+                    if (_stats.IsEnemyAllianceEnabled)
+                        continue;
+
+                    _cachedTargets.Add(smallPlayer);
                 }
             }
         }
@@ -155,7 +162,7 @@ namespace FiXiKTestScripts
 
             foreach (IAttacker threat in threats)
             {
-                if (threat.Transform == null) 
+                if (threat.Transform == null)
                     continue;
 
                 float dist = Vector2.Distance(myPos, threat.Transform.position);
@@ -176,7 +183,7 @@ namespace FiXiKTestScripts
 
             foreach (IEntity target in _cachedTargets)
             {
-                if (target == null || target.Transform == null) 
+                if (target == null || target.Transform == null)
                     continue;
 
                 float dist = Vector2.Distance(myPos, target.Transform.position);

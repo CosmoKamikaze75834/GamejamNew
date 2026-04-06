@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using FiXiKTestScripts;
-using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
 
 public class GameBootstrap : BootstrapBase
 {
+    [SerializeField] private RadioFactory _radioFactory;
     [SerializeField] private GameStats _gameStats;
     [SerializeField] private PopUp _menuButtons;
     [SerializeField] private Transform _playerStartPosition;
@@ -20,7 +20,6 @@ public class GameBootstrap : BootstrapBase
     private PlayerFactory _playerFactory;
     private EnemyFactory _enemyFactory;
     private NpcFactory _npcFactory;
-    private CinemachineCamera _cinemachineCamera;
 
     [Inject]
     public void Construct(
@@ -29,16 +28,14 @@ public class GameBootstrap : BootstrapBase
         IPauseSwitcher pauseSwitcher,
         PlayerFactory playerFactory,
         EnemyFactory enemyFactory,
-        NpcFactory npcFactory,
-        CinemachineCamera cinemachineCamera)
+        NpcFactory npcFactory)
     {
         _audioService = audioService;
         _inputReader = inputReader;
         _pauseSwitcher = pauseSwitcher;
         _playerFactory = playerFactory;
         _enemyFactory = enemyFactory;
-        _npcFactory = npcFactory;
-        _cinemachineCamera = cinemachineCamera;
+        _npcFactory = npcFactory;        
     }
 
     private void Start()
@@ -54,11 +51,11 @@ public class GameBootstrap : BootstrapBase
 
         _inputReader.EscapePressed += OnEscapePressed;
         _audioService?.Music.PlayGameMusic();
-        Player player = _playerFactory.Create(_playerStartPosition.position, _playerStartPosition.rotation);
+        SmallPlayer player = _playerFactory.CreateSmallPlayer(_playerStartPosition.position, _playerStartPosition.rotation);
         _enemyFactory.Spawn(_enemyCount);
-        _npcFactory.Spawn(_npcCount);
-        _cinemachineCamera.Follow = player.transform;
+        _npcFactory.Spawn(_npcCount);        
         _gameStats.CreateLines();
+        _radioFactory.Spawn(_enemyCount + 1);
     }
 
     private void OnDestroy()
