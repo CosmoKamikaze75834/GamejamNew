@@ -117,6 +117,6 @@ namespace FiXiKTestScripts
             _followTarget = null;
 
         private void OnShootPressed() =>
-            _shooter.TryShoot(transform.position, transform.right);
+            _shooter.TryShoot(transform.position, transform.up);
     }
 }

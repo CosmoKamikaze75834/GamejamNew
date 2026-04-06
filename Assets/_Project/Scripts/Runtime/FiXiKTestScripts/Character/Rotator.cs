@@ -18,7 +18,7 @@ namespace FiXiKTestScripts
             if (direction == Vector2.zero)
                 return;
 
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
             _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, _speed * deltaTime);
         }
